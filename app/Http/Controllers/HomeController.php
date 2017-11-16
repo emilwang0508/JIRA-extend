@@ -26,7 +26,8 @@ class HomeController extends Controller
 
     public function webhooks(Request $request)
     {
-        $json_string = json_encode($request->all());
+        $json_string = file_get_contents('js/webhooks.json');
+        $json_string==''?$json_string= json_encode($request->all()):$json_string = $json_string .','. json_encode($request->all());
         file_put_contents('js/webhooks.json',$json_string);
     }
 }
