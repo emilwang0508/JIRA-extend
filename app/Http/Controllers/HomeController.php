@@ -49,7 +49,7 @@ class HomeController extends Controller
         $issue->project_key = $fields['project']['key'];
         $issue->project_name = $fields['project']['name'];
         $issue->project = $fields['project'];
-        //assignee
+        //assigneesda
         $issue->assignee_key = $fields->assignee->key;
         $issue->assignee_name = $fields->assignee->name;
         $issue->assignee = $fields->assignee;
