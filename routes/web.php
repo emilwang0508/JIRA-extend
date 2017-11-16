@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 Route::any('/server-sent', 'HomeController@sent');
 Route::any('/webhooks', 'HomeController@webhooks');
+Route::any('/webhooks/test', 'HomeController@webhooksTest');
