@@ -15,3 +15,4 @@ Route::get('/', function () {
     return view('index');
 });
 Route::any('/server-sent', 'HomeController@sent');
+Route::any('/webhooks', 'HomeController@webhooks');

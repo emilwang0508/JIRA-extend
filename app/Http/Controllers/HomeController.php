@@ -14,4 +14,19 @@ class HomeController extends Controller
         echo "data: The server time is: {$time}\n\n";
         flush();
     }
+    //获取当前项目所有属性
+    public function getAllIssue()
+    {
+        
+    }
+    public function weekdays5pm()
+    {
+        
+    }
+
+    public function webhooks(Request $request)
+    {
+        $json_string = json_encode($request->all());
+        file_put_contents('js/webhooks.json',$json_string);
+    }
 }

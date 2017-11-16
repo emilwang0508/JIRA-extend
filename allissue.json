@@ -1,0 +1,321 @@
+{
+    "expand": "projects",
+    "projects": [
+    {
+        "self": "https://multiverseinc.atlassian.net/rest/api/2/project/10005",
+        "id": "10005",
+        "key": "DBT",
+        "name": "Develop BUG tracking",
+        "avatarUrls": {
+            "48x48": "https://multiverseinc.atlassian.net/secure/projectavatar?avatarId=10324",
+            "24x24": "https://multiverseinc.atlassian.net/secure/projectavatar?size=small&avatarId=10324",
+            "16x16": "https://multiverseinc.atlassian.net/secure/projectavatar?size=xsmall&avatarId=10324",
+            "32x32": "https://multiverseinc.atlassian.net/secure/projectavatar?size=medium&avatarId=10324"
+        },
+        "issuetypes": [
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10005",
+                "id": "10005",
+                "description": "对现有功能或任务的改进或完善。",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10310&avatarType=issuetype",
+                "name": "改进",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10002",
+                "id": "10002",
+                "description": "需要完成的任务。",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+                "name": "任务",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10003",
+                "id": "10003",
+                "description": "问题的子任务",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype",
+                "name": "子任务",
+                "subtask": true
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10006",
+                "id": "10006",
+                "description": "未开发的产品新功能。",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10311&avatarType=issuetype",
+                "name": "新功能",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10004",
+                "id": "10004",
+                "description": "测试过程，维护过程发现影响系统运行的问题。",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10303&avatarType=issuetype",
+                "name": "故障",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10000",
+                "id": "10000",
+                "description": "Created by Jira Software - do not edit or delete. Issue type for a big user story that needs to be broken down.",
+                "iconUrl": "https://multiverseinc.atlassian.net/images/icons/issuetypes/epic.svg",
+                "name": "Epic",
+                "subtask": false
+            }
+        ]
+    },
+    {
+        "self": "https://multiverseinc.atlassian.net/rest/api/2/project/10006",
+        "id": "10006",
+        "key": "HEYJ",
+        "name": "HeyJump",
+        "avatarUrls": {
+            "48x48": "https://multiverseinc.atlassian.net/secure/projectavatar?avatarId=10324",
+            "24x24": "https://multiverseinc.atlassian.net/secure/projectavatar?size=small&avatarId=10324",
+            "16x16": "https://multiverseinc.atlassian.net/secure/projectavatar?size=xsmall&avatarId=10324",
+            "32x32": "https://multiverseinc.atlassian.net/secure/projectavatar?size=medium&avatarId=10324"
+        },
+        "issuetypes": [
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10002",
+                "id": "10002",
+                "description": "需要完成的任务。",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+                "name": "任务",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10003",
+                "id": "10003",
+                "description": "问题的子任务",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype",
+                "name": "子任务",
+                "subtask": true
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10001",
+                "id": "10001",
+                "description": "Created by Jira Agile - do not edit or delete. Issue type for a user story.",
+                "iconUrl": "https://multiverseinc.atlassian.net/images/icons/issuetypes/story.svg",
+                "name": "故事",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10004",
+                "id": "10004",
+                "description": "测试过程，维护过程发现影响系统运行的问题。",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10303&avatarType=issuetype",
+                "name": "故障",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10000",
+                "id": "10000",
+                "description": "Created by Jira Software - do not edit or delete. Issue type for a big user story that needs to be broken down.",
+                "iconUrl": "https://multiverseinc.atlassian.net/images/icons/issuetypes/epic.svg",
+                "name": "Epic",
+                "subtask": false
+            }
+        ]
+    },
+    {
+        "self": "https://multiverseinc.atlassian.net/rest/api/2/project/10003",
+        "id": "10003",
+        "key": "MPG",
+        "name": "multiverse publishing group",
+        "avatarUrls": {
+            "48x48": "https://multiverseinc.atlassian.net/secure/projectavatar?avatarId=10324",
+            "24x24": "https://multiverseinc.atlassian.net/secure/projectavatar?size=small&avatarId=10324",
+            "16x16": "https://multiverseinc.atlassian.net/secure/projectavatar?size=xsmall&avatarId=10324",
+            "32x32": "https://multiverseinc.atlassian.net/secure/projectavatar?size=medium&avatarId=10324"
+        },
+        "issuetypes": [
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10002",
+                "id": "10002",
+                "description": "需要完成的任务。",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+                "name": "任务",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10003",
+                "id": "10003",
+                "description": "问题的子任务",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype",
+                "name": "子任务",
+                "subtask": true
+            }
+        ]
+    },
+    {
+        "self": "https://multiverseinc.atlassian.net/rest/api/2/project/10002",
+        "id": "10002",
+        "key": "RD",
+        "name": "R&D",
+        "avatarUrls": {
+            "48x48": "https://multiverseinc.atlassian.net/secure/projectavatar?avatarId=10324",
+            "24x24": "https://multiverseinc.atlassian.net/secure/projectavatar?size=small&avatarId=10324",
+            "16x16": "https://multiverseinc.atlassian.net/secure/projectavatar?size=xsmall&avatarId=10324",
+            "32x32": "https://multiverseinc.atlassian.net/secure/projectavatar?size=medium&avatarId=10324"
+        },
+        "issuetypes": [
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10005",
+                "id": "10005",
+                "description": "对现有功能或任务的改进或完善。",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10310&avatarType=issuetype",
+                "name": "改进",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10002",
+                "id": "10002",
+                "description": "需要完成的任务。",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+                "name": "任务",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10003",
+                "id": "10003",
+                "description": "问题的子任务",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype",
+                "name": "子任务",
+                "subtask": true
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10006",
+                "id": "10006",
+                "description": "未开发的产品新功能。",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10311&avatarType=issuetype",
+                "name": "新功能",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10004",
+                "id": "10004",
+                "description": "测试过程，维护过程发现影响系统运行的问题。",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10303&avatarType=issuetype",
+                "name": "故障",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10000",
+                "id": "10000",
+                "description": "Created by Jira Software - do not edit or delete. Issue type for a big user story that needs to be broken down.",
+                "iconUrl": "https://multiverseinc.atlassian.net/images/icons/issuetypes/epic.svg",
+                "name": "Epic",
+                "subtask": false
+            }
+        ]
+    },
+    {
+        "self": "https://multiverseinc.atlassian.net/rest/api/2/project/10000",
+        "id": "10000",
+        "key": "SAM",
+        "name": "SampleProject",
+        "avatarUrls": {
+            "48x48": "https://multiverseinc.atlassian.net/secure/projectavatar?avatarId=10324",
+            "24x24": "https://multiverseinc.atlassian.net/secure/projectavatar?size=small&avatarId=10324",
+            "16x16": "https://multiverseinc.atlassian.net/secure/projectavatar?size=xsmall&avatarId=10324",
+            "32x32": "https://multiverseinc.atlassian.net/secure/projectavatar?size=medium&avatarId=10324"
+        },
+        "issuetypes": [
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10002",
+                "id": "10002",
+                "description": "需要完成的任务。",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+                "name": "任务",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10003",
+                "id": "10003",
+                "description": "问题的子任务",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype",
+                "name": "子任务",
+                "subtask": true
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10001",
+                "id": "10001",
+                "description": "Created by Jira Agile - do not edit or delete. Issue type for a user story.",
+                "iconUrl": "https://multiverseinc.atlassian.net/images/icons/issuetypes/story.svg",
+                "name": "故事",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10004",
+                "id": "10004",
+                "description": "测试过程，维护过程发现影响系统运行的问题。",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10303&avatarType=issuetype",
+                "name": "故障",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10000",
+                "id": "10000",
+                "description": "Created by Jira Software - do not edit or delete. Issue type for a big user story that needs to be broken down.",
+                "iconUrl": "https://multiverseinc.atlassian.net/images/icons/issuetypes/epic.svg",
+                "name": "Epic",
+                "subtask": false
+            }
+        ]
+    },
+    {
+        "self": "https://multiverseinc.atlassian.net/rest/api/2/project/10001",
+        "id": "10001",
+        "key": "SD",
+        "name": "Seeking Dawn",
+        "avatarUrls": {
+            "48x48": "https://multiverseinc.atlassian.net/secure/projectavatar?avatarId=10324",
+            "24x24": "https://multiverseinc.atlassian.net/secure/projectavatar?size=small&avatarId=10324",
+            "16x16": "https://multiverseinc.atlassian.net/secure/projectavatar?size=xsmall&avatarId=10324",
+            "32x32": "https://multiverseinc.atlassian.net/secure/projectavatar?size=medium&avatarId=10324"
+        },
+        "issuetypes": [
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10002",
+                "id": "10002",
+                "description": "需要完成的任务。",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+                "name": "任务",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10003",
+                "id": "10003",
+                "description": "问题的子任务",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype",
+                "name": "子任务",
+                "subtask": true
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10001",
+                "id": "10001",
+                "description": "Created by Jira Agile - do not edit or delete. Issue type for a user story.",
+                "iconUrl": "https://multiverseinc.atlassian.net/images/icons/issuetypes/story.svg",
+                "name": "故事",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10004",
+                "id": "10004",
+                "description": "测试过程，维护过程发现影响系统运行的问题。",
+                "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10303&avatarType=issuetype",
+                "name": "故障",
+                "subtask": false
+            },
+            {
+                "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10000",
+                "id": "10000",
+                "description": "Created by Jira Software - do not edit or delete. Issue type for a big user story that needs to be broken down.",
+                "iconUrl": "https://multiverseinc.atlassian.net/images/icons/issuetypes/epic.svg",
+                "name": "Epic",
+                "subtask": false
+            }
+        ]
+    }
+]
+}

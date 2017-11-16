@@ -98,5 +98,16 @@ return [
             'expire' => 60,
         ],
     ],
-
+    'guards' => [
+        'web' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+        ],
+    ],
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => \AtlassianConnectCore\Models\Tenant::class,
+        ],
+    ]
 ];

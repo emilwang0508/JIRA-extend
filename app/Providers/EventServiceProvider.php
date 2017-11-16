@@ -15,9 +15,17 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\Event' => [
             'App\Listeners\EventListener',
+            \AtlassianConnectCore\Events\Installed::class => [
+                \AtlassianConnectCore\Listeners\CreateOrUpdateTenant::class
+            ],
+            \AtlassianConnectCore\Events\Uninstalled::class => [
+                \AtlassianConnectCore\Listeners\DeleteTenant::class
+            ]
         ],
     ];
-
+    protected $subscribe = [
+        \AtlassianConnectCore\Listeners\PluginEventSubscriber::class
+    ];
     /**
      * Register any events for your application.
      *

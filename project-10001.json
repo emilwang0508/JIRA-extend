@@ -1,0 +1,81 @@
+{
+  "expand": "description,lead,issueTypes,url,projectKeys",
+  "self": "https://multiverseinc.atlassian.net/rest/api/2/project/10001",
+  "id": "10001",
+  "key": "SD",
+  "description": "",
+  "lead": {
+    "self": "https://multiverseinc.atlassian.net/rest/api/2/user?username=admin",
+    "key": "admin",
+    "accountId": "557058:ff89f709-a465-421d-958d-7f3f06af80a7",
+    "name": "admin",
+    "avatarUrls": {
+      "16x16": "https://avatar-cdn.atlassian.com/59d5cd48c6fd10828b58cad321b44356?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F59d5cd48c6fd10828b58cad321b44356%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+      "24x24": "https://avatar-cdn.atlassian.com/59d5cd48c6fd10828b58cad321b44356?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F59d5cd48c6fd10828b58cad321b44356%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+      "32x32": "https://avatar-cdn.atlassian.com/59d5cd48c6fd10828b58cad321b44356?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F59d5cd48c6fd10828b58cad321b44356%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue",
+      "48x48": "https://avatar-cdn.atlassian.com/59d5cd48c6fd10828b58cad321b44356?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2F59d5cd48c6fd10828b58cad321b44356%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue"
+    },
+    "displayName": "Freeman Fan",
+    "active": true
+  },
+  "components": [],
+  "issueTypes": [
+    {
+      "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10002",
+      "id": "10002",
+      "description": "需要完成的任务。",
+      "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+      "name": "任务",
+      "subtask": false,
+      "avatarId": 10318
+    },
+    {
+      "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10003",
+      "id": "10003",
+      "description": "问题的子任务",
+      "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10316&avatarType=issuetype",
+      "name": "子任务",
+      "subtask": true,
+      "avatarId": 10316
+    },
+    {
+      "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10001",
+      "id": "10001",
+      "description": "Created by Jira Agile - do not edit or delete. Issue type for a user story.",
+      "iconUrl": "https://multiverseinc.atlassian.net/images/icons/issuetypes/story.svg",
+      "name": "故事",
+      "subtask": false
+    },
+    {
+      "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10004",
+      "id": "10004",
+      "description": "测试过程，维护过程发现影响系统运行的问题。",
+      "iconUrl": "https://multiverseinc.atlassian.net/secure/viewavatar?size=xsmall&avatarId=10303&avatarType=issuetype",
+      "name": "故障",
+      "subtask": false,
+      "avatarId": 10303
+    },
+    {
+      "self": "https://multiverseinc.atlassian.net/rest/api/2/issuetype/10000",
+      "id": "10000",
+      "description": "Created by Jira Software - do not edit or delete. Issue type for a big user story that needs to be broken down.",
+      "iconUrl": "https://multiverseinc.atlassian.net/images/icons/issuetypes/epic.svg",
+      "name": "Epic",
+      "subtask": false
+    }
+  ],
+  "assigneeType": "UNASSIGNED",
+  "versions": [],
+  "name": "Seeking Dawn",
+  "roles": {
+    "Developers": "https://multiverseinc.atlassian.net/rest/api/2/project/10001/role/10100",
+    "Administrators": "https://multiverseinc.atlassian.net/rest/api/2/project/10001/role/10002"
+  },
+  "avatarUrls": {
+    "48x48": "https://multiverseinc.atlassian.net/secure/projectavatar?avatarId=10324",
+    "24x24": "https://multiverseinc.atlassian.net/secure/projectavatar?size=small&avatarId=10324",
+    "16x16": "https://multiverseinc.atlassian.net/secure/projectavatar?size=xsmall&avatarId=10324",
+    "32x32": "https://multiverseinc.atlassian.net/secure/projectavatar?size=medium&avatarId=10324"
+  },
+  "projectTypeKey": "software"
+}

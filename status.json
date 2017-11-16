@@ -1,0 +1,86 @@
+[
+  {
+    "self": "https://multiverseinc.atlassian.net/rest/api/2/status/3",
+    "description": "此问题正在被经办人积极处理。",
+    "iconUrl": "https://multiverseinc.atlassian.net/images/icons/statuses/inprogress.png",
+    "name": "处理中",
+    "id": "3",
+    "statusCategory": {
+      "self": "https://multiverseinc.atlassian.net/rest/api/2/statuscategory/4",
+      "id": 4,
+      "key": "indeterminate",
+      "colorName": "yellow",
+      "name": "处理中"
+    }
+  },
+  {
+    "self": "https://multiverseinc.atlassian.net/rest/api/2/status/4",
+    "description": "This issue was once resolved, but the resolution was deemed incorrect.From here issues are either marked assigned or resolved.",
+    "iconUrl": "https://multiverseinc.atlassian.net/images/icons/statuses/reopened.png",
+    "name": "重新打开",
+    "id": "4",
+    "statusCategory": {
+      "self": "https://multiverseinc.atlassian.net/rest/api/2/statuscategory/2",
+      "id": 2,
+      "key": "new",
+      "colorName": "blue-gray",
+      "name": "待办"
+    }
+  },
+  {
+    "self": "https://multiverseinc.atlassian.net/rest/api/2/status/5",
+    "description": "A resolution has been taken, and it is awaiting verification by reporter.From here issues are either reopened, or are closed.",
+    "iconUrl": "https://multiverseinc.atlassian.net/images/icons/statuses/resolved.png",
+    "name": "已解决",
+    "id": "5",
+    "statusCategory": {
+      "self": "https://multiverseinc.atlassian.net/rest/api/2/statuscategory/3",
+      "id": 3,
+      "key": "done",
+      "colorName": "green",
+      "name": "完成"
+    }
+  },
+  {
+    "self": "https://multiverseinc.atlassian.net/rest/api/2/status/10000",
+    "description": "",
+    "iconUrl": "https://multiverseinc.atlassian.net/",
+    "name": "待办",
+    "id": "10000",
+    "statusCategory": {
+      "self": "https://multiverseinc.atlassian.net/rest/api/2/statuscategory/2",
+      "id": 2,
+      "key": "new",
+      "colorName": "blue-gray",
+      "name": "待办"
+    }
+  },
+  {
+    "self": "https://multiverseinc.atlassian.net/rest/api/2/status/10001",
+    "description": "",
+    "iconUrl": "https://multiverseinc.atlassian.net/",
+    "name": "完成",
+    "id": "10001",
+    "statusCategory": {
+      "self": "https://multiverseinc.atlassian.net/rest/api/2/statuscategory/3",
+      "id": 3,
+      "key": "done",
+      "colorName": "green",
+      "name": "完成"
+    }
+  },
+  {
+    "self": "https://multiverseinc.atlassian.net/rest/api/2/status/10002",
+    "description": "",
+    "iconUrl": "https://multiverseinc.atlassian.net/",
+    "name": "In Review",
+    "id": "10002",
+    "statusCategory": {
+      "self": "https://multiverseinc.atlassian.net/rest/api/2/statuscategory/4",
+      "id": 4,
+      "key": "indeterminate",
+      "colorName": "yellow",
+      "name": "处理中"
+    }
+  }
+]
