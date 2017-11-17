@@ -46,46 +46,46 @@ class HomeController extends Controller
             $issue->key = $issueS['key'];
             $issue->user_id = $request->user_id;
             $issue->user_key = $request->user_key;
-    //        $issue->fields = json_encode($fields);
-    //        $issue->issuetype = json_encode($fields['issuetype']);
-    //        dd(strlen($issue->issuetype));
             //project
             $issue->project_id = $fields['project']['id'];
             $issue->project_key = $fields['project']['key'];
             $issue->project_name = $fields['project']['name'];
-    //        $issue->project = json_encode($fields['project']);
             //assigneesda
             $issue->assignee_key = $fields['assignee']['key'];
             $issue->assignee_name = $fields['assignee']['name'];
-    //        $issue->assignee = json_encode($fields['assignee']);
             //creator
             $issue->creator_key = $fields['creator']['key'];
             $issue->creator_name = $fields['creator']['name'];
-    //        $issue->creator = json_encode($fields['creator']);
             //summary
             $issue->summary = $fields['summary'];
+            $issue->issue_key = $fields['summary'];
             //reporter
             $issue->reporter_key = $fields['reporter']['key'];
             $issue->reporter_name = $fields['reporter']['name'];
-    //        $issue->reporter = json_encode($fields['reporter']);
-            //changelog
-    //        $issue->changelog = json_encode($request->changelog);
+            //issue
+            $issue->reporter_key = $fields['reporter']['key'];
+            $issue->reporter_name = $fields['reporter']['name'];
             //status
             $staus = $fields['status'];
-    //        echo(json_encode($staus));
             $issue->status_id = $staus['id'];
             $issue->status_name = $staus['name'];
             $issue->statusCategory_key = $staus['statusCategory']['key'];
             $issue->statusCategory_id = $staus['statusCategory']['id'];
-    //        $issue->status = json_encode($staus);
-    //        $issue->remark = json_encode($request->all());
-    //        dd($issue);
-            $issue->save();
-            $message = $issue->user_id."将".$issue->project_name.'的'.$issue->key.'任务的状态改称为：'.$issue->statusCategory_key;
-            $this->send_pusher($message);
+            $changelog  = $request->changelog;
+            $items = $changelog['items'];
+            foreach ($items as $item){
+                if ($item['field'] == 'status'){
+                    $issue->toString = $item['toString'];
+                    $issue->fromString = $item['fromString'];
+                }
+            }
+            if ($issue->toString == 'Done'||$issue->toString == 'Reopened'){
+
+                $this->send_pusher($issue);
+            }
             }
     }
-    public function send_pusher($message)
+    public function send_pusher($issue)
     {
         $options = array(
             'cluster' => 'us2',
@@ -98,14 +98,28 @@ class HomeController extends Controller
             '432251',
             $options
         );
-
+        if($issue->toString == 'Done'){
+            $message = $issue->user_id."将".$issue->project_name.'的"'.$issue->key.$issue->summary.'"的状态从'.$issue->fromString.'改称为：'.$issue->toString.', 请'.$issue->reporter_name.'验收';
+        }
+        if ($issue->toString == 'Reopened'){
+            $message = $issue->user_id."将".$issue->project_name.'的"'.$issue->key.$issue->summary.'"的状态从'.$issue->fromString.'改称为：'.$issue->toString.', 请'.$issue->assignee_name.'注意';
+        }
+//        $message = $issue->user_id."将".$issue->project_name.'的"'.$issue->key.$issue->summary.'"的状态从'.$issue->fromString.'改称为：'.$issue->toString.'请';
         $data['message'] = $message;
+        $data['toString'] = $issue->toString;
+        $data['fromString'] = $issue->fromString;
         $access_token = '24.d985bc11e0e7346eb70b26d7a6cf5cd8.2592000.1513493401.282335-10346057';
         $tex = $message;
         $cuid = 'fe80::5dfa:a924:40e9:a2d%6';
         $client = new \GuzzleHttp\Client();
         $client->request('get', 'http://tsn.baidu.com/text2audio?tex='.$tex.'&lan=zh&cuid='.$cuid.'&ctp=1&tok='.$access_token);
         $data['voiceUrl'] = 'http://tsn.baidu.com/text2audio?tex='.$tex.'&lan=zh&cuid='.$cuid.'&ctp=1&tok='.$access_token;
+        $data['projectName'] = $issue->project_name;
+        $data['userName'] = $issue->user_key;
+        $data['summary'] = $issue->summary;
+        $data['reporterName'] = $issue->reporter_name;
+        $data['assigneeName'] = $issue->assignee_name;
+        $data['issueKey'] = $issue->key;
         $pusher->trigger('my-channel', 'my-event', $data);
     }
     public function sendVoice(){

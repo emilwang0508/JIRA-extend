@@ -8350,3 +8350,76 @@ button.close {
   }
 }
 
+h2 {
+  text-align: center;
+  margin: 50px 0;
+}
+
+ul li .name {
+  font-size: 20px;
+}
+
+ul li .summary {
+  margin: 15px 0;
+}
+
+ul#reopened-list li {
+  padding: 20px;
+  margin: 10px;
+  color: #ffffff;
+  border-radius: 10px;
+  background: #ff711a;
+}
+
+ul#done-list li {
+  padding: 20px;
+  margin: 10px;
+  color: #ffffff;
+  border-radius: 10px;
+  background: #4ab206;
+}
+
+.fromName,
+.toName {
+  border-radius: 5px;
+  color: #fff;
+  background-color: #02c0f6;
+}
+
+ul#done-list li .fromName,
+ul#done-list li .toName {
+  background-color: #ff4949;
+}
+
+.status {
+  position: relative;
+  display: block;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.status > * {
+  position: absolute;
+  padding: 5px;
+}
+
+.fromName {
+  left: 0;
+}
+
+.fromString {
+  left: 25%;
+}
+
+.toName {
+  right: 0;
+}
+
+.toSting {
+  right: 25%;
+}
+
+.to {
+  left: 50%;
+}
+
