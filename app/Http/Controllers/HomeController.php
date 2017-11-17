@@ -50,30 +50,30 @@ class HomeController extends Controller
         $issue->project_name = $fields['project']['name'];
         $issue->project = $fields['project'];
         //assigneesda
-        $issue->assignee_key = $fields->assignee->key;
-        $issue->assignee_name = $fields->assignee->name;
-        $issue->assignee = $fields->assignee;
+        $issue->assignee_key = $fields['assignee']['key'];
+        $issue->assignee_name = $fields['assignee']['name'];
+        $issue->assignee = $fields['assignee'];
         //creator
-        $issue->creator_key = $fields->creator->key;
-        $issue->creator_name = $fields->creator->name;
-        $issue->creator = $fields->creator;
+        $issue->creator_key = $fields['creator']['key'];
+        $issue->creator_name = $fields['creator']['name'];
+        $issue->creator = $fields['creator'];
         //summary
-        $issue->summary = $fields->summary;
+        $issue->summary = $fields['summary'];
         //reporter
-        $issue->reporter_key = $fields->reporter->key;
-        $issue->reporter_name = $fields->reporter->name;
-        $issue->reporter = $fields->reporter;
+        $issue->reporter_key = $fields['reporter']['key'];
+        $issue->reporter_name = $fields['reporter']['name'];
+        $issue->reporter = $fields['reporter'];
         //changelog
         $issue->changelog = $request->changelog;
         //status
-        $staus = $fields->status;
-        $issue->status_id = $staus->id;
-        $issue->status_name = $staus->name;
-        $issue->statusCategory_key = $staus->statusCategory->key;
-        $issue->statusCategory_id = $staus->statusCategory->id;
+        $staus = $fields['status'];
+        $issue->status_id = $staus['id'];
+        $issue->status_name = $staus['name'];
+        $issue->statusCategory_key = $staus['statusCategory']['key'];
+        $issue->statusCategory_id = $staus['statusCategory']['id'];
         $issue->status = $staus;
         $issue->remark = $request->all();
-        dd($issue);
-        //         $issue->save();
+//        dd($issue);
+        $issue->save();
     }
 }
