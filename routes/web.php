@@ -17,3 +17,7 @@ Route::get('/', function () {
 Route::any('/server-sent', 'HomeController@sent');
 Route::any('/webhooks', 'HomeController@webhooks');
 Route::any('/webhooks/test', 'HomeController@webhooksTest');
+Route::any('/send-issue', 'HomeController@webhooksTest');
+Route::any('/pusher_test', 'HomeController@pusher_test');
+Route::any('/get', 'HomeController@getAllIssue');
+Route::any('/getVoice', 'HomeController@sendVoice');

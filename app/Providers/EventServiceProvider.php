@@ -15,12 +15,15 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\Event' => [
             'App\Listeners\EventListener',
-            \AtlassianConnectCore\Events\Installed::class => [
+            /*\AtlassianConnectCore\Events\Installed::class => [
                 \AtlassianConnectCore\Listeners\CreateOrUpdateTenant::class
             ],
             \AtlassianConnectCore\Events\Uninstalled::class => [
                 \AtlassianConnectCore\Listeners\DeleteTenant::class
-            ]
+            ],*/
+        ],
+        'App\Events\IssueAdd' => [
+            'App\Listeners\SendIssueAddNotification',
         ],
     ];
     protected $subscribe = [
@@ -34,7 +37,10 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-
+        //注册事件
+        Event::listen('event.*', function ($eventName, array $data) {
+            //
+        });
         //
     }
 }

@@ -9,24 +9,35 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+        <link rel="stylesheet" href="/layui/css/layui.css">
     </head>
     <body>
-        <h1>获得服务器更新</h1>
+        <h1>JIRA任务语音播报</h1>
         <div id="result"></div>
+        <audio src="" id="audio"></audio>
     </body>
+    <script src="/layui/layui.all.js"></script>
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <script>
-        if(typeof(EventSource)!=="undefined")
-        {
-            var source=new EventSource("/server-sent");
-            source.onmessage=function(event)
-            {
-                document.getElementById("result").innerHTML+=event.data + "<br />";
-            };
-        }
-        else
-        {
-            document.getElementById("result").innerHTML="抱歉，您的浏览器不支持 server-sent 事件 ...";
-        }
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('2ef9566826373100cc30', {
+            cluster: 'us2',
+            encrypted: true
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        var x = document.getElementById("audio");
+        channel.bind('my-event', function(data) {
+            x.src = data.voiceUrl;
+            x.play();
+            layer.msg(data.message,{
+                offset:'t',
+                anim: 6
+            });
+        });
+
     </script>
 </html>
