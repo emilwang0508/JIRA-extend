@@ -21,7 +21,7 @@
             <div class="layui-col-md6">
                 <h2 >REOPENED</h2>
                 <ul id="reopened-list">
-                    <li class="layui-anim layui-anim-upbit">
+                    {{--<li class="layui-anim layui-anim-upbit">
                         <p class="name">Seeking Dawn</p>
                         <p class="summary">SD 777: 呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵</p>
                         <div class="status">
@@ -32,13 +32,13 @@
                             <span class="toName">Alexi</span>
                             <span></span>
                         </div>
-                    </li>
+                    </li>--}}
                 </ul>
             </div>
             <div class="layui-col-md6">
                 <h2>DONE</h2>
                 <ul id="done-list">
-                    <li class="layui-anim layui-anim-upbit">
+                {{-- <li class="layui-anim layui-anim-upbit">
                     <p class="name">Seeking Dawn</p>
                     <p class="summary">SD 777: 呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵</p>
                     <div class="status">
@@ -49,7 +49,7 @@
                         <span class="toName">Alexi</span>
                         <span></span>
                     </div>
-                    </li>
+                    </li>--}}
                 </ul>
             </div>
         </div>
@@ -96,7 +96,7 @@
                     <div class="status">
                         <span class="fromName">`+data.userName+`</span>
                         <span class="fromString">`+data.fromString+`</span>
-                        <span class="to">TO</span>
+                        <span class="to">\></span>
                         <span class="toSting">`+data.toString+`</span>
                         <span class="toName">`+data.reporterName+`</span>
                         <span></span>
@@ -112,9 +112,9 @@
                     <div class="status">
                         <span class="fromName">`+data.userName+`</span>
                         <span class="fromString">`+data.fromString+`</span>
-                        <span class="to">TO</span>
+                        <span class="to">\></span>
                         <span class="toSting">`+data.toString+`</span>
-                        <span class="toName">`+data.assignee_name+`</span>
+                        <span class="toName">`+data.assigneeName+`</span>
                         <span></span>
                     </div>
                 </li>

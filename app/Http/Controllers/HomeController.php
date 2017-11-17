@@ -99,10 +99,10 @@ class HomeController extends Controller
             $options
         );
         if($issue->toString == 'Done'){
-            $message = $issue->user_id."将".$issue->project_name.'的"'.$issue->key.$issue->summary.'"的状态从'.$issue->fromString.'改称为：'.$issue->toString.', 请'.$issue->reporter_name.'验收';
+            $message = $issue->user_id."将".$issue->project_name.'的"'.$issue->key.$issue->summary.'"的状态从'.$issue->fromString.'改称为：'.$issue->toString.'......请'.$issue->reporter_name.'验收';
         }
         if ($issue->toString == 'Reopened'){
-            $message = $issue->user_id."将".$issue->project_name.'的"'.$issue->key.$issue->summary.'"的状态从'.$issue->fromString.'改称为：'.$issue->toString.', 请'.$issue->assignee_name.'注意';
+            $message = $issue->user_id."将".$issue->project_name.'的"'.$issue->key.$issue->summary.'"的状态从'.$issue->fromString.'改称为：'.$issue->toString.'......请'.$issue->assignee_name.'注意';
         }
 //        $message = $issue->user_id."将".$issue->project_name.'的"'.$issue->key.$issue->summary.'"的状态从'.$issue->fromString.'改称为：'.$issue->toString.'请';
         $data['message'] = $message;
