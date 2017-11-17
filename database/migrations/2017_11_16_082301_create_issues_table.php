@@ -17,8 +17,8 @@ class CreateIssuesTable extends Migration
             $table->integer('id')->nullable();
             $table->string('self')->nullable();
             $table->string('key')->nullable();
-            $table->integer('user_id')->nullable();
-            $table->integer('user_key')->nullable();
+            $table->string('user_id')->nullable();
+            $table->string('user_key')->nullable();
             $table->string('fields')->nullable();
             $table->string('issuetype')->nullable();
             $table->string('project_id')->nullable();
