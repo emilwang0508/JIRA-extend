@@ -93,18 +93,19 @@ class HomeController extends Controller
         );
 //        Pusher::pusher();
         $pusher = new Pusher(
-            '2ef9566826373100cc30',
-            'd6dda86cc65a256681df',
-            '432251',
+            env('PUSHER_APP_KEY'),
+            env('PUSHER_APP_SECRET'),
+            env('PUSHER_APP_ID'),
             $options
         );
         if($issue->toString == 'Done'){
-            $message = $issue->user_id."将".$issue->project_name.'的"'.$issue->key.$issue->summary.'"的状态从'.$issue->fromString.'改称为：'.$issue->toString.'......请'.$issue->reporter_name.'验收';
+//            $message = $issue->user_id."将".$issue->project_name.'的"'.$issue->key.$issue->summary.'"的状态从'.$issue->fromString.'改称为：'.$issue->toString.'......请'.$issue->reporter_name.'验收';
+            $message = '测试员'.$issue->reporter_name."有新任务";
         }
         if ($issue->toString == 'Reopened'){
-            $message = $issue->user_id."将".$issue->project_name.'的"'.$issue->key.$issue->summary.'"的状态从'.$issue->fromString.'改称为：'.$issue->toString.'......请'.$issue->assignee_name.'注意';
+            $message = '经办人'.$issue->assignee_name."有新任务";
+//            $message = $issue->user_id."将".$issue->project_name.'的"'.$issue->key.$issue->summary.'"的状态从'.$issue->fromString.'改称为：'.$issue->toString.'......请'.$issue->assignee_name.'注意';
         }
-//        $message = $issue->user_id."将".$issue->project_name.'的"'.$issue->key.$issue->summary.'"的状态从'.$issue->fromString.'改称为：'.$issue->toString.'请';
         $data['message'] = $message;
         $data['toString'] = $issue->toString;
         $data['fromString'] = $issue->fromString;
@@ -129,5 +130,34 @@ class HomeController extends Controller
         $cuid = 'fe80::5dfa:a924:40e9:a2d%6';
         $res =  $client->request('get', 'http://tsn.baidu.com/text2audio?tex='.$tex.'&lan=zh&cuid='.$cuid.'&ctp=1&tok='.$access_token);
         dd($res);
+    }
+    /*
+     * 定时任务
+     * */
+    public function timingTasks()
+    {
+        
+    }
+    /*
+     * build  通知
+     * */
+    public function buildEventPusher(Request $request)
+    {
+        if ($request->buildName!==''&$request->event!==''){
+            $options = array(
+                'cluster' => 'us2',
+                'encrypted' => true
+            );
+            $pusher = new Pusher(
+                env('PUSHER_APP_KEY'),
+                env('PUSHER_APP_SECRET'),
+                env('PUSHER_APP_ID'),
+                $options
+            );
+            $data = array();
+            $data['buildName']=$request->buildName;
+            $data['event'] = $request->event;
+            $pusher->trigger('my-channel', 'build-project-event', $data);
+        }
     }
 }

@@ -8423,3 +8423,22 @@ ul#done-list li .toName {
   left: 50%;
 }
 
+#build-project-area {
+  margin-top: 50px;
+}
+
+#build-project-area li {
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  color: #ffffff;
+}
+
+#build-project-area li.success {
+  background-color: green;
+}
+
+#build-project-area li.failure {
+  background-color: darkred;
+}
+

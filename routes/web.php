@@ -21,3 +21,4 @@ Route::any('/send-issue', 'HomeController@webhooksTest');
 Route::any('/pusher_test', 'HomeController@pusher_test');
 Route::any('/get', 'HomeController@getAllIssue');
 Route::any('/getVoice', 'HomeController@sendVoice');
+Route::any('/buildEventPusher', 'HomeController@buildEventPusher');

@@ -11,49 +11,26 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/layui/css/layui.css">
         <link rel="stylesheet" href="/css/app.css">
-        <style>
-
-        </style>
     </head>
     <body>
-    <div class="layui-container">
+    {{--<div class="layui-container">--}}
         <div class="layui-row">
-            <div class="layui-col-md6">
+            <div class="layui-col-md5">
                 <h2 >REOPENED</h2>
                 <ul id="reopened-list">
-                    {{--<li class="layui-anim layui-anim-upbit">
-                        <p class="name">Seeking Dawn</p>
-                        <p class="summary">SD 777: 呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵</p>
-                        <div class="status">
-                            <span class="fromName">emil</span>
-                            <span class="fromString">Done</span>
-                            <span class="to">TO</span>
-                            <span class="toSting">Reopened</span>
-                            <span class="toName">Alexi</span>
-                            <span></span>
-                        </div>
-                    </li>--}}
                 </ul>
             </div>
-            <div class="layui-col-md6">
+            <div class="layui-col-md5">
                 <h2>DONE</h2>
                 <ul id="done-list">
-                {{-- <li class="layui-anim layui-anim-upbit">
-                    <p class="name">Seeking Dawn</p>
-                    <p class="summary">SD 777: 呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵</p>
-                    <div class="status">
-                        <span class="fromName">emil</span>
-                        <span class="fromString">Done</span>
-                        <span class="to">TO</span>
-                        <span class="toSting">Reopened</span>
-                        <span class="toName">Alexi</span>
-                        <span></span>
-                    </div>
-                    </li>--}}
+                </ul>
+            </div>
+            <div class="layui-col-md2">
+                <ul id="build-project-area">
                 </ul>
             </div>
         </div>
-    </div>
+    {{--</div>--}}
     <audio src="" id="audio"></audio>
     </body>
     <script src="/js/jQuery-3.2.1.min.js"></script>
@@ -64,7 +41,7 @@
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
-        var pusher = new Pusher('2ef9566826373100cc30', {
+        var pusher = new Pusher('{{env('PUSHER_APP_KEY')}}', {
             cluster: 'us2',
             encrypted: true
         });
@@ -74,20 +51,6 @@
         channel.bind('my-event', function(data) {
             x.src = data.voiceUrl;
             x.play();
-            /*var html = `
-            <li class="layui-anim layui-anim-upbit">
-            <p class="name">`+data.project_name+`</p>
-            <p class="summary">`+data.summary+`</p>
-            <div class="status">
-                <span class="fromName">`+data.user_name+`</span>
-                <span class="fromString">`+data.fromString+`</span>
-                <span class="to">TO</span>
-                <span class="toSting">`+data.toString+`</span>
-                <span class="toName">data.reporter_name</span>
-                <span></span>
-            </div>
-            </li>
-        `;*/
             if (data.toString == 'Done'){
                 $("#done-list").prepend(`
                   <li class="layui-anim layui-anim-upbit">
@@ -121,6 +84,16 @@
                 `);
             }
         });
-
+        channel.bind('build-project-event', function(data){
+            if(data.event == 'success'){
+                $("#build-project-area").prepend(`
+                    <li class="success">“`+data.buildName+`”Build成功</li>
+                `)
+            }else if(data.event == 'failure'){
+                $("#build-project-area").prepend(`
+                    <li class="failure">“`+data.buildName+`”Build失败</li>
+                `)
+            }
+        })
     </script>
 </html>
