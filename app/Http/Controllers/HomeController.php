@@ -52,19 +52,19 @@ class HomeController extends Controller
             $issue->project_name = $fields['project']['name'];
             //assigneesda
             $issue->assignee_key = $fields['assignee']['key'];
-            $issue->assignee_name = $fields['assignee']['name'];
+            $issue->assignee_name = $fields['assignee']['displayName'];
             //creator
             $issue->creator_key = $fields['creator']['key'];
-            $issue->creator_name = $fields['creator']['name'];
+            $issue->creator_name = $fields['creator']['displayName'];
             //summary
             $issue->summary = $fields['summary'];
             $issue->issue_key = $fields['summary'];
             //reporter
             $issue->reporter_key = $fields['reporter']['key'];
-            $issue->reporter_name = $fields['reporter']['name'];
+            $issue->reporter_name = $fields['reporter']['displayName'];
             //issue
             $issue->reporter_key = $fields['reporter']['key'];
-            $issue->reporter_name = $fields['reporter']['name'];
+            $issue->reporter_name = $fields['reporter']['displayName'];
             //status
             $staus = $fields['status'];
             $issue->status_id = $staus['id'];
@@ -218,9 +218,22 @@ class HomeController extends Controller
      * */
     public function am10checked()
     {
-        /*$jql = 'project = SD AND status in (Reopened, "To Do") AND Sprint = 27 ORDER BY Rank ASC';
-        $res = $this->issueSearch($jql);*/
-
+        $jql = 'project = SD AND issuetype in (Task, Story) AND status in ("In Progress", Reopened, "To Do") AND Sprint = 27 AND assignee in (alexis) order by lastViewed DESC';
+        $res = $this->issueSearch($jql);
+        $issues = $res->issues;
+        $fields = $issues['fields'];
+        $spentHours = 0;
+        $totalWorkingHours= 80;
+        $remainingWorkingHours = $totalWorkingHours - $spentHours;
+    }
+    /*
+     *
+     * */
+    public function PunchEvent()
+    {
+        $text = '渣渣们，不要忘记打卡哦！！！渣渣们，不要忘记打卡哦！！！渣渣们，不要忘记打卡哦！！！';
+        $videoSrc = $this->tts($text);
+        dd($videoSrc);
     }
     /*
      * $jql
@@ -235,5 +248,17 @@ class HomeController extends Controller
             ]
         ]);
         return $res;
+    }
+    /*
+     * TTS
+     * */
+    public function tts($text)
+    {
+        $client = new \GuzzleHttp\Client();
+        $access_token = '24.d985bc11e0e7346eb70b26d7a6cf5cd8.2592000.1513493401.282335-10346057';
+        $cuid = 'fe80::5dfa:a924:40e9:a2d%6';
+        $url = 'http://tsn.baidu.com/text2audio?tex='.$text.'&lan=zh&cuid='.$cuid.'&ctp=1&tok='.$access_token;
+        $res =  $client->request('get', $url);
+        return $url;
     }
 }

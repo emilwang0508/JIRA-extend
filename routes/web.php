@@ -23,3 +23,4 @@ Route::any('/get', 'HomeController@getAllIssue');
 Route::any('/getVoice', 'HomeController@sendVoice');
 Route::any('/buildEventPusher', 'HomeController@buildEventPusher');
 Route::any('/doneIssueChecked', 'HomeController@doneIssueChecked');
+Route::any('/PunchEvent', 'HomeController@PunchEvent');
