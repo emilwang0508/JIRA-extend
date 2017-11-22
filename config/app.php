@@ -177,6 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Pusher\Laravel\PusherServiceProvider::class,
+        Aws\Laravel\AwsServiceProvider::class,//aws-cli
     ],
 
     /*
@@ -226,6 +227,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Pusher' => Pusher\Laravel\Facades\Pusher::class,
+        'AWS' => Aws\Laravel\AwsFacade::class,
     ],
 
 ];
