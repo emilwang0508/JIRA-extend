@@ -17,10 +17,10 @@ return [
     |
     */
     'credentials' => [
-        'key'    => 'YOUR_AWS_ACCESS_KEY_ID',
-        'secret' => 'YOUR_AWS_SECRET_ACCESS_KEY',
+        'key'    => env('AWS_KEY'),
+        'secret' =>  env('AWS_SECRET'),
     ],
-    'region' => env('AWS_REGION', 'us-east-1'),
+    'region' => env('AWS_REGION', 'us-east-2'),
     'version' => 'latest',
     'ua_append' => [
         'L5MOD/' . AwsServiceProvider::VERSION,

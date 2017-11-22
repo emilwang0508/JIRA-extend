@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Issue;
+use Aws\Credentials\Credentials;
+use Aws\Laravel\AwsFacade;
+use Aws\Polly\PollyClient;
+use Aws\S3\S3Client;
 use Illuminate\Http\Request;
 use Pusher\Pusher;
 
@@ -46,6 +50,7 @@ class HomeController extends Controller
             $issue->key = $issueS['key'];
             $issue->user_id = $request->user_id;
             $issue->user_key = $request->user_key;
+            $issue->user_name = $request->user['displayName'];
             //project
             $issue->project_id = $fields['project']['id'];
             $issue->project_key = $fields['project']['key'];
@@ -71,6 +76,7 @@ class HomeController extends Controller
             $issue->status_name = $staus['name'];
             $issue->statusCategory_key = $staus['statusCategory']['key'];
             $issue->statusCategory_id = $staus['statusCategory']['id'];
+
             $changelog  = $request->changelog;
             $items = $changelog['items'];
             foreach ($items as $item){
@@ -99,24 +105,18 @@ class HomeController extends Controller
             $options
         );
         if($issue->toString == 'Done'){
-//            $message = $issue->user_id."将".$issue->project_name.'的"'.$issue->key.$issue->summary.'"的状态从'.$issue->fromString.'改称为：'.$issue->toString.'......请'.$issue->reporter_name.'验收';
-            $message = '测试员'.$issue->reporter_name."有新任务";
+            $message = '<speak>'.$issue->user_name.'task done.<break time="0.5s">'.$issue->reporter_name."please check.</speak>";
         }
         if ($issue->toString == 'Reopened'){
-            $message = '经办人'.$issue->assignee_name."有新任务";
-//            $message = $issue->user_id."将".$issue->project_name.'的"'.$issue->key.$issue->summary.'"的状态从'.$issue->fromString.'改称为：'.$issue->toString.'......请'.$issue->assignee_name.'注意';
+            $message = '<speak>'.$issue->assignee_name."task reopened.</speak>";
         }
         $data['message'] = $message;
+        $data['voiceUrl'] =  $this->polly($message);
         $data['toString'] = $issue->toString;
         $data['fromString'] = $issue->fromString;
-        $access_token = '24.d985bc11e0e7346eb70b26d7a6cf5cd8.2592000.1513493401.282335-10346057';
-        $tex = $message;
-        $cuid = 'fe80::5dfa:a924:40e9:a2d%6';
-        $client = new \GuzzleHttp\Client();
-        $client->request('get', 'http://tsn.baidu.com/text2audio?tex='.$tex.'&lan=zh&cuid='.$cuid.'&ctp=1&tok='.$access_token);
-        $data['voiceUrl'] = 'http://tsn.baidu.com/text2audio?tex='.$tex.'&lan=zh&cuid='.$cuid.'&ctp=1&tok='.$access_token;
+        $text = $message;
         $data['projectName'] = $issue->project_name;
-        $data['userName'] = $issue->user_key;
+        $data['userName'] = $issue->user_name;
         $data['summary'] = $issue->summary;
         $data['reporterName'] = $issue->reporter_name;
         $data['assigneeName'] = $issue->assignee_name;
@@ -269,5 +269,61 @@ class HomeController extends Controller
         $url = 'http://tsn.baidu.com/text2audio?tex='.$text.'&lan=zh&cuid='.$cuid.'&ctp=1&tok='.$access_token;
         $res =  $client->request('get', $url);
         return $url;
+    }
+    /*
+     * amazon polly tts
+     * */
+    public function polly($text){
+        $credentials = new Credentials(env('AWS_KEY'),env('AWS_SECRET'));
+        $polly = new PollyClient([
+               'version'     => 'latest',
+                'region'      => 'us-west-2',
+                'credentials' => $credentials,
+                'http'    => [
+                    'verify' => base_path('public\cacert.pem')
+                ]
+        ]);
+        $res = $polly->synthesizeSpeech([
+            'OutputFormat' => 'mp3', // REQUIRED
+            'Text' => $text, // REQUIRED
+            'TextType' => 'ssml',
+            'VoiceId' => 'Joanna', // REQUIRED
+        ]);
+        $resultData = $res->get('AudioStream')->getContents();//获得mp3文件
+        $myfile = fopen(time().'-polly.mp3','w');
+        fwrite($myfile,$resultData);
+
+        // 创建临时文件
+        $fileName = time().'-polly.mp3';
+        $s3region = 'us-west-2';
+        $s3 = new S3Client(
+            [
+                'version' => 'latest',
+                'credentials' => $credentials,
+                'region' => $s3region,
+                'http'    => [
+                    'verify' => base_path('public\cacert.pem')
+                ]
+            ]
+        );
+        $s3bucket = 'multiverse.upload';
+        $url = base_path('public\\'.$fileName);
+        $file = fopen($url, 'r');
+        $resultS3 = $s3->putObject([
+            'Key'=>$fileName,
+            'ACL'=>'public-read',
+            'Body'=>$file ,
+            'Bucket'=>$s3bucket,
+            'ContentType'=>'audio/mpeg',
+        ]);
+        $ObjectURL = $resultS3->get('ObjectURL');
+        fclose($file);
+        fclose($myfile);
+        unlink(base_path('public\\').$fileName);
+        if ($ObjectURL){
+
+            return $ObjectURL;
+        }
+
     }
 }

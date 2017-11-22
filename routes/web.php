@@ -25,3 +25,4 @@ Route::any('/buildEventPusher', 'HomeController@buildEventPusher');
 Route::any('/doneIssueChecked', 'HomeController@doneIssueChecked');
 Route::any('/PunchEvent', 'HomeController@PunchEvent');
 Route::any('/am10checked', 'HomeController@am10checked');
+Route::any('/polly', 'HomeController@polly');
