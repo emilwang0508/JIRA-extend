@@ -105,13 +105,14 @@ class HomeController extends Controller
             $options
         );
         if($issue->toString == 'Done'){
-            $message = '<speak>'.$issue->user_name.'task done.<break time="0.5s">'.$issue->reporter_name."please check.</speak>";
+            $message = '<speak>'.$issue->user_name.' task done.<break time="0.5s">'.$issue->reporter_name."please check.</speak>";
         }
         if ($issue->toString == 'Reopened'){
-            $message = '<speak>'.$issue->assignee_name."task reopened.</speak>";
+            $message = '<speak>'.$issue->assignee_name." task reopened.</speak>";
         }
         $data['message'] = $message;
         $data['voiceUrl'] =  $this->polly($message);
+        print_r($message);
         $data['toString'] = $issue->toString;
         $data['fromString'] = $issue->fromString;
         $text = $message;
