@@ -280,7 +280,7 @@ class HomeController extends Controller
                 'region'      => 'us-west-2',
                 'credentials' => $credentials,
                 'http'    => [
-                    'verify' => base_path('public\cacert.pem')
+                    'verify' => base_path('public/cacert.pem')
                 ]
         ]);
         $res = $polly->synthesizeSpeech([
@@ -302,12 +302,12 @@ class HomeController extends Controller
                 'credentials' => $credentials,
                 'region' => $s3region,
                 'http'    => [
-                    'verify' => base_path('public\cacert.pem')
+                    'verify' => base_path('public/cacert.pem')
                 ]
             ]
         );
         $s3bucket = 'multiverse.upload';
-        $url = base_path('public\\'.$fileName);
+        $url = base_path('public/'.$fileName);
         $file = fopen($url, 'r');
         $resultS3 = $s3->putObject([
             'Key'=>$fileName,
@@ -319,7 +319,7 @@ class HomeController extends Controller
         $ObjectURL = $resultS3->get('ObjectURL');
         fclose($file);
         fclose($myfile);
-        unlink(base_path('public\\').$fileName);
+        unlink(base_path('public/').$fileName);
         if ($ObjectURL){
 
             return $ObjectURL;
