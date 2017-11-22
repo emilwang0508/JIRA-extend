@@ -280,7 +280,7 @@ class HomeController extends Controller
                 'region'      => 'us-west-2',
                 'credentials' => $credentials,
                 'http'    => [
-                    'verify' => base_path('public/cacert.pem')
+                    'verify' => base_path('cacert.pem')
                 ]
         ]);
         $res = $polly->synthesizeSpeech([
@@ -302,7 +302,7 @@ class HomeController extends Controller
                 'credentials' => $credentials,
                 'region' => $s3region,
                 'http'    => [
-                    'verify' => base_path('public/cacert.pem')
+                    'verify' => base_path('cacert.pem')
                 ]
             ]
         );
