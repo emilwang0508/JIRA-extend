@@ -70,6 +70,15 @@ class HomeController extends Controller
             //issue
             $issue->reporter_key = $fields['reporter']['key'];
             $issue->reporter_name = $fields['reporter']['displayName'];
+            //issue
+            if (array_key_exists('tester',$fields)){
+                $issue->tester_key = $fields['tester']['key'];
+                $issue->tester_name = $fields['tester']['displayName'];
+            }else{
+                $issue->tester_key = '';
+                $issue->tester_name = '';
+            }
+
             //status
             $staus = $fields['status'];
             $issue->status_id = $staus['id'];
@@ -104,8 +113,9 @@ class HomeController extends Controller
             env('PUSHER_APP_ID'),
             $options
         );
+        ($issue->tester_name == '')?$repoter = $issue->reporter_name: $repoter = $issue->tester_name;
         if($issue->toString == 'Done'){
-            $message = '<speak>'.$issue->user_name.' task done.<break time="0.5s" />'.$issue->reporter_name." please check.</speak>";
+            $message = '<speak>'.$issue->user_name.' task done.<break time="0.5s" />'.$repoter." please check.</speak>";
         }
         if ($issue->toString == 'Reopened'){
             $message = '<speak>'.$issue->assignee_name." task reopened.</speak>";
@@ -120,7 +130,7 @@ class HomeController extends Controller
         $data['projectKey'] = $issue->project_key;
         $data['userName'] = $issue->user_name;
         $data['summary'] = $issue->summary;
-        $data['reporterName'] = $issue->reporter_name;
+        $data['reporterName'] = $repoter;
         $data['assigneeName'] = $issue->assignee_name;
         $data['issueKey'] = $issue->key;
         $pusher->trigger('my-channel', 'my-event', $data);
@@ -251,9 +261,10 @@ class HomeController extends Controller
      * */
     public function PunchEvent()
     {
-        $text = '渣渣们，不要忘记打卡哦！！！渣渣们，不要忘记打卡哦！！！渣渣们，不要忘记打卡哦！！！';
-        $videoSrc = $this->tts($text);
-        dd($videoSrc);
+        $text = '<speak>Please Da Ka<break time="0.5s" />Please Da Ka Please Da Ka</speak>';
+        $data['voiceUrl'] = $this->polly($text);
+        $this->push($data,'punch-event');
+        print_r($data);
     }
     /*
      * $jql

@@ -18,45 +18,18 @@
             <div class="layui-col-md5">
                 <h2 class="reopened-title">-REOPENED</h2>
                 <ul id="reopened-list">
-                    {{--<li class="layui-anim layui-anim-upbit">
-                        <div class="project"><div class="key fl">SD128:</div><div class="summary fl">呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵</div></div>
-                        <div class="status">
-                            <span class="fromName">Emil Wong</span>
-                            <span class="to">TO:</span>
-                            <span class="toName">Alexis</span>
-                            <span></span>
-                        </div>
-                        <div class="project_key">SD</div>
-                    </li>--}}
+
                 </ul>
             </div>
             <div class="layui-col-md5">
                 <h2 class="done-title">-DONE</h2>
                 <ul id="done-list">
-                    {{--<li class="layui-anim layui-anim-upbit">
-                        <div class="project"><div class="key fl">SD128:</div><div class="summary fl">呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵</div></div>
-                        --}}{{--<span  class="name">SeekingDawn</span>--}}{{--
-                        <div class="status">
-                            <span class="fromName">Emil Wong</span>
-                            <span class="to">TO:</span>
-                            <span class="toName">Alexis</span>
-                            <span></span>
-                        </div>
-                        <div class="project_key">SD</div>
-                    </li>--}}
                 </ul>
             </div>
             <div class="layui-col-md2">
                 <h2 class="builds-title">-BUILDS</h2>
                 <ul id="build-project-area">
-{{--                    <li class="success">
-                        <p class="project-name">data.projectName</p>
-                        <p class="event">data.buildName<span class="status">successful.</span></p>
-                    </li>
-                    <li class="failure">
-                        <p class="project-name">data.projectName</p>
-                        <p class="event">data.buildName <span class="status">failed.</span></p>
-                    </li>--}}
+
                 </ul>
             </div>
         </div>
@@ -148,6 +121,10 @@
                     </li>
                 `)
             }
+        })
+        channel.bind('punch-event', function(data){
+            x.src = data.voiceUrl;
+            x.play();
         })
     </script>
 </html>
