@@ -117,6 +117,7 @@ class HomeController extends Controller
         $data['fromString'] = $issue->fromString;
         $text = $message;
         $data['projectName'] = $issue->project_name;
+        $data['projectKey'] = $issue->project_key;
         $data['userName'] = $issue->user_name;
         $data['summary'] = $issue->summary;
         $data['reporterName'] = $issue->reporter_name;
@@ -160,7 +161,16 @@ class HomeController extends Controller
             );
             $data = array();
             $data['buildName']=$request->buildName;
+            $data['projectName']=$request->projectName;
             $data['event'] = $request->event;
+            if ( $data['event'] == 'success'){
+                $text = $request->buildName.' build successful.';
+            }
+            else if($data['event'] == 'failure'){
+                $text = $request->buildName.' build failed.';
+            }
+
+            $data['voiceUrl'] = $this->polly($text,'text');
             $pusher->trigger('my-channel', 'build-project-event', $data);
         }
     }
@@ -274,7 +284,7 @@ class HomeController extends Controller
     /*
      * amazon polly tts
      * */
-    public function polly($text){
+    public function polly($text,$textType = 'ssml'){
         $credentials = new Credentials(env('AWS_KEY'),env('AWS_SECRET'));
         $polly = new PollyClient([
                'version'     => 'latest',
@@ -287,7 +297,7 @@ class HomeController extends Controller
         $res = $polly->synthesizeSpeech([
             'OutputFormat' => 'mp3', // REQUIRED
             'Text' => $text, // REQUIRED
-            'TextType' => 'ssml',
+            'TextType' => $textType,
             'VoiceId' => 'Joanna', // REQUIRED
         ]);
         $resultData = $res->get('AudioStream')->getContents();//获得mp3文件
