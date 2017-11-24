@@ -7,7 +7,7 @@ environment-defaults:
     repository: null
 global:
   application_name: JIRA
-  default_ec2_keyname: null
+  default_ec2_keyname: emil
   default_platform: arn:aws:elasticbeanstalk:us-east-2::platform/PHP 7.1 running on
     64bit Amazon Linux/2.5.0
   default_region: us-east-2

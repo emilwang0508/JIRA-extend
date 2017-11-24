@@ -122,7 +122,23 @@
                 `)
             }
         })
+        //打卡事件
         channel.bind('punch-event', function(data){
+            x.src = data.voiceUrl;
+            x.play();
+        })
+        //
+        channel.bind('play-voice-event', function(data){
+            x.src = data.voiceUrl;
+            x.play();
+        })
+        // am10 event
+        channel.bind('am10checked-event', function(data){
+            x.src = data.voiceUrl;
+            x.play();
+        })
+        // pm5:30 event
+        channel.bind('done-issue-checked-event', function(data){
             x.src = data.voiceUrl;
             x.play();
         })

@@ -26,6 +26,27 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        // Da ka Event
+        $schedule->call(function(){
+            $url = 'http://jira.multiverseinc.com/PunchEvent';
+            $client = new \GuzzleHttp\Client();
+            $res = $client->request('GET',$url);
+            if ($res->voiceUrl==''){
+                $res = $client->request('GET',$url);
+            }
+        })->dailyAt('9:13');
+        // Check sprint progress.
+        $schedule->call(function(){
+
+        })->wednesdays()->at('10:00');
+        // Verify completed tasks
+        $schedule->call(function(){
+
+        })->wednesdays()->at('17:30');
+        // volunteer for unassigned task.
+        $schedule->call(function(){
+
+        })->everyFiveMinutes();
     }
 
     /**

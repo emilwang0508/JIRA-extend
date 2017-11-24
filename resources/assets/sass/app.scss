@@ -55,6 +55,7 @@ ul#reopened-list li{
     padding: 1rem 1rem 0;
     font-size: 0.48rem;
     overflow: hidden;
+
     .key{
       font-weight: bold;
       width: 30%;
@@ -64,6 +65,8 @@ ul#reopened-list li{
       width: 70%;
       font-size: 0.7rem;
       font-weight: bold;
+      height: 1.8rem;
+      overflow: hidden;
     }
   }
   .status{
@@ -102,6 +105,8 @@ ul#done-list li{
       width: 70%;
       font-size: 0.7rem;
       font-weight: bold;
+      height: 1.8rem;
+      overflow: hidden;
     }
   }
   .status{

@@ -1,0 +1,6 @@
+[2017-11-24 07:49:57] JiraClient.ERROR: CURL Error: http response=400,  [] []
+[2017-11-24 08:14:23] JiraClient.ERROR: CURL Error: http response=0, Empty reply from server [] []
+[2017-11-24 08:36:56] JiraClient.ERROR: CURL Error: http response=0, Empty reply from server [] []
+[2017-11-24 10:22:27] JiraClient.ERROR: CURL Error: http response=0, Unknown SSL protocol error in connection to multiverseinc.atlassian.net:443  [] []
+[2017-11-24 10:24:40] JiraClient.ERROR: CURL Error: http response=0, Unknown SSL protocol error in connection to multiverseinc.atlassian.net:443  [] []
+[2017-11-24 10:26:47] JiraClient.ERROR: CURL Error: http response=0, Unknown SSL protocol error in connection to multiverseinc.atlassian.net:443  [] []
