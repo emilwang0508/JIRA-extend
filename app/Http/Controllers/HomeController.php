@@ -308,7 +308,6 @@ class HomeController extends Controller
             $data['voiceUrl'] = $this->polly($text,'text');
             $data['name'] = $StrugglingFriends;
             $res = $this->push($data,'am10checked-event');
-            dd($res->push);
         }
 
 
