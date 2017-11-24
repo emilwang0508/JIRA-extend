@@ -11,9 +11,11 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/layui/css/layui.css">
         <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.css" />
     </head>
     <body>
-    {{--<div class="layui-container">--}}
+    <div id="fullpage">
+        <div class="section">
         <div class="layui-row">
             <div class="layui-col-md5">
                 <h2 class="reopened-title">-REOPENED</h2>
@@ -33,12 +35,39 @@
                 </ul>
             </div>
         </div>
-    {{--</div>--}}
+        </div>
+        <div class="section">
+            <div id="amEvent" class="layui-col-md6">
+                <p class="title" id="amEventTilte">10:00AM</p>
+                <ul  id="am">
+
+                </ul>
+            </div>
+            <div id="pmEvent" class="layui-col-md6">
+                <p class="title" id="pmEventTilte">5:30PM</p>
+                <ul id="pm" >
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
     <audio src="" id="audio"></audio>
     </body>
     <script src="/js/jQuery-3.2.1.min.js"></script>
     <script src="/layui/layui.all.js"></script>
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
+{{--    <!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
+    <script src="vendors/jquery.easings.min.js"></script>--}}
+
+
+    <!-- This following line is only necessary in the case of using the option `scrollOverflow:true` -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/vendors/scrolloverflow.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.js"></script>
+
     <script>
         // “()()”表示自执行函数
         (function (doc, win) {
@@ -136,11 +165,40 @@
         channel.bind('am10checked-event', function(data){
             x.src = data.voiceUrl;
             x.play();
+            var string = '';
+            for (var i in data.name){
+                string += '<li class="layui-col-md6">'+ i +'</li>'
+            }
+            $("#am").append(string);
         })
         // pm5:30 event
         channel.bind('done-issue-checked-event', function(data){
             x.src = data.voiceUrl;
             x.play();
+            var string = '';
+            for (var i in data.name){
+                string += '<li class="layui-col-md6">'+ i +'</li>'
+            }
+            $("#pm").append(string);
         })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                //Navigation
+                menu: '#menu',
+                lockAnchors: false,
+                anchors:['firstPage', 'secondPage'],
+                navigation: false,
+                navigationPosition: 'right',
+                navigationTooltips: ['firstSlide', 'secondSlide'],
+                showActiveTooltip: false,
+                slidesNavigation: false,
+                slidesNavPosition: 'bottom',
+                verticalCentered:false,
+                setAutoScrolling: true,
+                scrollOverflow: true
+            });
+        });
     </script>
 </html>

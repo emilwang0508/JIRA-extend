@@ -161,3 +161,23 @@ ul#done-list li{
   transform: rotate(-45deg);
   bottom: 0.5rem;
 }
+#amEvent,#pmEvent{
+  background: url(/images/event_bg.png) no-repeat center;
+  height: 13rem;
+  position: relative;
+  background-size: contain;
+  margin-top: 2rem;
+  padding: 0 3rem;
+  .title{
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 0.5rem 0;
+    font-weight: bold;
+  }
+  li{
+    text-align: left;
+    font-size: .6rem;
+    text-indent: 1rem;
+    overflow: hidden;
+  }
+}
