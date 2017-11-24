@@ -38,13 +38,13 @@
         </div>
         <div class="section">
             <div id="amEvent" class="layui-col-md6">
-                <p class="title" id="amEventTilte">10:00AM</p>
+                <p class="title" id="amEventTilte">10:00</p>
                 <ul  id="am">
 
                 </ul>
             </div>
             <div id="pmEvent" class="layui-col-md6">
-                <p class="title" id="pmEventTilte">5:30PM</p>
+                <p class="title" id="pmEventTilte">17:30</p>
                 <ul id="pm" >
 
                 </ul>
