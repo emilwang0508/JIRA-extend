@@ -37,15 +37,30 @@ class Kernel extends ConsoleKernel
         })->dailyAt('9:13');
         // Check sprint progress.
         $schedule->call(function(){
-
+            $url = 'http://jira.multiverseinc.com/amChecked';
+            $client = new \GuzzleHttp\Client();
+            $res = $client->request('GET',$url);
+            if ($res->voiceUrl==''){
+                $res = $client->request('GET',$url);
+            }
         })->wednesdays()->at('10:00');
         // Verify completed tasks
         $schedule->call(function(){
-
+            $url = 'http://jira.multiverseinc.com/doneIssueChecked';
+            $client = new \GuzzleHttp\Client();
+            $res = $client->request('GET',$url);
+            if ($res->voiceUrl==''){
+                $res = $client->request('GET',$url);
+            }
         })->wednesdays()->at('17:30');
         // volunteer for unassigned task.
         $schedule->call(function(){
-
+            $url = 'http://jira.multiverseinc.com/todoChecked';
+            $client = new \GuzzleHttp\Client();
+            $res = $client->request('GET',$url);
+            if ($res->voiceUrl==''){
+                $res = $client->request('GET',$url);
+            }
         })->everyFiveMinutes();
     }
 
