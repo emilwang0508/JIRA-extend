@@ -14,6 +14,10 @@ use JiraRestApi\Issue\IssueService;
 
 class HomeController extends Controller
 {
+    public function __construct($sprintId)
+    {
+        $this->sprintId = $sprintId;
+    }
     public function sent()
     {
         header('Content-Type: text/event-stream');
@@ -182,7 +186,7 @@ class HomeController extends Controller
      * */
     public function doneIssueChecked()
     {
-        $jql = 'project = SD AND status = Done AND Sprint = 27 order by lastViewed DESC';
+        $jql = 'project = SD AND status = Done AND Sprint = '.env('SPRINT_ID').' order by lastViewed DESC';
         $res = $this->jira($jql);
         $issues = $res->issues;//获得任务数组
         //  定义推送数组
@@ -212,7 +216,7 @@ class HomeController extends Controller
      * */
     public function todoChecked()
     {
-        $jql = 'project = SD AND status = "To Do" AND Sprint = 27 AND assignee in (EMPTY) order by lastViewed DESC';
+        $jql = 'project = SD AND status = "To Do" AND Sprint = '.env('SPRINT_ID').' AND assignee in (EMPTY) order by lastViewed DESC';
         $res = $this->jira($jql);
         $total = $res->total;//获得任务数组
         if ($total!==''){
@@ -276,7 +280,7 @@ class HomeController extends Controller
         $StrugglingFriends = array();
         foreach ($friends as $friend){
             $name = $friend["name"];
-            $jql = 'project = SD AND issuetype = Story AND status in ("In Progress", Reopened, "To Do") AND Sprint = 27 AND assignee in ('.$name.') order by lastViewed DESC ';
+            $jql = 'project = SD AND issuetype = Story AND status in ("In Progress", Reopened, "To Do") AND Sprint = '.env('SPRINT_ID').' AND assignee in ('.$name.') order by lastViewed DESC ';
             $res = $this->jira($jql);
             if ($res->total===0){
 
@@ -413,7 +417,9 @@ class HomeController extends Controller
         }
 
     }
-
+    /*
+     * jira
+     * */
     public function jira($jql,$startAt=0,$maxResult=100)
     {
         $iss = new IssueService(new ArrayConfiguration(
@@ -426,4 +432,5 @@ class HomeController extends Controller
         $res = $iss->search($jql,$startAt,$maxResult);
         return $res;
     }
+
 }
