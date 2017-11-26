@@ -14,10 +14,6 @@ use JiraRestApi\Issue\IssueService;
 
 class HomeController extends Controller
 {
-    public function __construct($sprintId)
-    {
-        $this->sprintId = $sprintId;
-    }
     public function sent()
     {
         header('Content-Type: text/event-stream');
