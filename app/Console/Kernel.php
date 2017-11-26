@@ -34,6 +34,14 @@ class Kernel extends ConsoleKernel
             if ($res->voiceUrl==''){
                 $res = $client->request('GET',$url);
             }
+        })->everyMinute('9:13');
+        $schedule->call(function(){
+            $url = 'http://jira.multiverseinc.com/PunchEvent';
+            $client = new \GuzzleHttp\Client();
+            $res = $client->request('GET',$url);
+            if ($res->voiceUrl==''){
+                $res = $client->request('GET',$url);
+            }
         })->dailyAt('9:13');
         // Check sprint progress.
         $schedule->call(function(){
