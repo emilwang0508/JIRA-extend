@@ -215,7 +215,6 @@ class HomeController extends Controller
         $jql = 'project = SD AND status = "To Do" AND Sprint = '.env('SPRINT_ID').' AND assignee in (EMPTY) order by lastViewed DESC';
         $res = $this->jira($jql);
         $total = $res->total;//获得任务数组
-        dd($total!=="");
         if ($total!==0){
             $text = '<speak>Please volunteer for unassigned task.</speak>';
             $voiceUrl = $this->polly($text);
