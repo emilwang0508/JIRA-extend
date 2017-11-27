@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
             if ($res->voiceUrl==''){
                 $res = $client->request('GET',$url);
             }
-        })->timezone('Asia/Shanghai')->dailyAt('23:25');
+        })->timezone('Asia/Shanghai')->dailyAt('23:30');
         $schedule->call(function(){
             $url = 'http://jira.multiverseinc.com/PunchEvent';
             $client = new \GuzzleHttp\Client();
@@ -42,7 +42,7 @@ class Kernel extends ConsoleKernel
             if ($res->voiceUrl==''){
                 $res = $client->request('GET',$url);
             }
-        })->dailyAt('9:13')->timezone('Asia/Shanghai');
+        })->timezone('Asia/Shanghai')->dailyAt('9:13');
         // Check sprint progress.
         $schedule->call(function(){
             $url = 'http://jira.multiverseinc.com/amChecked';
@@ -69,7 +69,7 @@ class Kernel extends ConsoleKernel
             if ($res->voiceUrl==''){
                 $res = $client->request('GET',$url);
             }
-        })->weekdays()->everyFiveMinutes();
+        })->timezone('Asia/Shanghai')->weekdays()->everyFiveMinutes();
     }
 
     /**
