@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
             if ($res->voiceUrl==''){
                 $res = $client->request('GET',$url);
             }
-        })->wednesdays()->at('23:10')->timezone('Asia/Shanghai');
+        })->wednesdays()->at('23:15')->timezone('Asia/Shanghai');
         $schedule->call(function(){
             $url = 'http://jira.multiverseinc.com/PunchEvent';
             $client = new \GuzzleHttp\Client();
