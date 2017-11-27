@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
             if ($res->voiceUrl==''){
                 $res = $client->request('GET',$url);
             }
-        })->wednesdays()->at('23:15')->timezone('Asia/Shanghai');
+        })->timezone('Asia/Shanghai')->dailyAt('23:25');
         $schedule->call(function(){
             $url = 'http://jira.multiverseinc.com/PunchEvent';
             $client = new \GuzzleHttp\Client();
@@ -42,7 +42,7 @@ class Kernel extends ConsoleKernel
             if ($res->voiceUrl==''){
                 $res = $client->request('GET',$url);
             }
-        })->wednesdays()->at('9:13')->timezone('Asia/Shanghai');
+        })->dailyAt('9:13')->timezone('Asia/Shanghai');
         // Check sprint progress.
         $schedule->call(function(){
             $url = 'http://jira.multiverseinc.com/amChecked';
@@ -51,7 +51,7 @@ class Kernel extends ConsoleKernel
             if ($res->voiceUrl==''){
                 $res = $client->request('GET',$url);
             }
-        })->wednesdays()->at('10:00')->timezone('Asia/Shanghai');;
+        })->timezone('Asia/Shanghai')->dailyAt('10:00');
         // Verify completed tasks
         $schedule->call(function(){
             $url = 'http://jira.multiverseinc.com/doneIssueChecked';
@@ -60,7 +60,7 @@ class Kernel extends ConsoleKernel
             if ($res->voiceUrl==''){
                 $res = $client->request('GET',$url);
             }
-        })->wednesdays()->at('17:30')->timezone('Asia/Shanghai');;
+        })->timezone('Asia/Shanghai')->dailyAt('17:30');
         // volunteer for unassigned task.
         $schedule->call(function(){
             $url = 'http://jira.multiverseinc.com/todoChecked';
