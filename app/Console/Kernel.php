@@ -34,7 +34,15 @@ class Kernel extends ConsoleKernel
             if ($res->voiceUrl==''){
                 $res = $client->request('GET',$url);
             }
-        })->dailyAt('9:13');
+        })->wednesdays()->at('22:45')->timezone('Asia/Shanghai');
+        $schedule->call(function(){
+            $url = 'http://jira.multiverseinc.com/PunchEvent';
+            $client = new \GuzzleHttp\Client();
+            $res = $client->request('GET',$url);
+            if ($res->voiceUrl==''){
+                $res = $client->request('GET',$url);
+            }
+        })->wednesdays()->at('9:13')->timezone('Asia/Shanghai');
         // Check sprint progress.
         $schedule->call(function(){
             $url = 'http://jira.multiverseinc.com/amChecked';
@@ -43,7 +51,7 @@ class Kernel extends ConsoleKernel
             if ($res->voiceUrl==''){
                 $res = $client->request('GET',$url);
             }
-        })->wednesdays()->at('10:00');
+        })->wednesdays()->at('10:00')->timezone('Asia/Shanghai');;
         // Verify completed tasks
         $schedule->call(function(){
             $url = 'http://jira.multiverseinc.com/doneIssueChecked';
@@ -52,7 +60,7 @@ class Kernel extends ConsoleKernel
             if ($res->voiceUrl==''){
                 $res = $client->request('GET',$url);
             }
-        })->wednesdays()->at('17:30');
+        })->wednesdays()->at('17:30')->timezone('Asia/Shanghai');;
         // volunteer for unassigned task.
         $schedule->call(function(){
             $url = 'http://jira.multiverseinc.com/todoChecked';
@@ -61,7 +69,7 @@ class Kernel extends ConsoleKernel
             if ($res->voiceUrl==''){
                 $res = $client->request('GET',$url);
             }
-        })->everyFiveMinutes();
+        })->weekdays()->everyFiveMinutes();
     }
 
     /**
