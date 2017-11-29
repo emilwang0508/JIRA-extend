@@ -429,4 +429,21 @@ class HomeController extends Controller
         return $res;
     }
 
+    public function sendMsg(Request $request)
+    {
+        if($request->isMethod('post')){
+            if ($request->text!==''){
+                if ($request->type=='ssml'){
+
+                }else{
+                    $data['voiceUrl'] = $this->polly($request->text,'text');
+                    $this->push($data,'punch-event');
+                }
+            }else{
+
+            }
+        }
+
+        return view('sendMsg');
+    }
 }

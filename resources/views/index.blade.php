@@ -90,7 +90,14 @@
         })(document, window);
     </script>
     <script>
-
+        /*var audioPlay = new function (Src) {
+            this.Src = array();
+            this._audio = document.getElementById('audio');
+            arrayPush(this.Src,Src)
+            this.Src.forEach(function (e) {
+                console.log(e)
+            })
+        }*/
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
