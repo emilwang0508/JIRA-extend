@@ -598,12 +598,14 @@ xiongfei => tsiong fei*/
             case 'Emil Wong':
                 return 'Emil';
                 break;
+            default:
+                return $name;
         }
     }
 
     public function test()
     {
-       $res = $this->getPronunciation('XIONG FEIi');
+       $res = $this->getPronunciation('');
        dd($res);
     }
 }
