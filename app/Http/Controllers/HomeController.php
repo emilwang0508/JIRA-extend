@@ -111,10 +111,10 @@ class HomeController extends Controller
         );
         ($issue->tester_name == '')?$repoter = $issue->reporter_name: $repoter = $issue->tester_name;
         if($issue->toString == 'Done'){
-            $message = '<speak>'.$issue->user_name.' task done.<break time="0.5s" />'.$repoter." please check.</speak>";
+            $message = '<speak>'.$this->getPronunciation($issue->user_name)||$issue->user_name.' task done.<break time="0.5s" />'.$repoter." please check.</speak>";
         }
         if ($issue->toString == 'Reopened'){
-            $message = '<speak>'.$issue->assignee_name." task reopened.</speak>";
+            $message = '<speak>'.$this->getPronunciation($issue->assignee_name)." task reopened.</speak>";
         }
         $data['message'] = $message;
         print_r($message);
@@ -200,7 +200,7 @@ class HomeController extends Controller
         $data['name'] = $name;
         $string = '';
         foreach($name as $k=>$v){
-            $string .= $k.'<break time="0.2s" />';
+            $string .= $this->getPronunciation($k).'<break time="0.2s" />';
         };
         $text = '<speak>'.$string.'please verify completed tasks.</speak>';
         $voiceUrl = $this->polly($text);
@@ -273,6 +273,29 @@ class HomeController extends Controller
             ['name'=>'xucheng93161','displayName'=>'xucheng'],
             ['name'=> 'yohan.duval','displayName'=>'Yohan'],
         ];
+/*        HePingChuan => NekoPara
+Alexis => Alexis
+ccw => ccw
+chenggong => Brother Gong
+ChenQiaMing => Charmin
+chenquanhong => chen chuen hong
+Emil Wong => Emil
+Freeman Fan => Freeman
+jinlinhan => lin han
+Jiwon Kang => Jiwon
+lianghaoming => hao ming
+liangjifen => tsi fen
+LIBO => LI BO
+LiuFan => Lio Fan
+penggaohua => Our best tester ever
+PQ => PQ
+xucheng => dja dja cheng
+xuyi => tsu yi
+Yohan => Yohan
+ZengZhiXiong => da siong
+Zhang DaoYang => Eric
+徐铭泽 => Lynch
+xiongfei => tsiong fei*/
         $StrugglingFriends = array();
         foreach ($friends as $friend){
             $name = $friend["name"];
@@ -302,10 +325,10 @@ class HomeController extends Controller
         if (count($StrugglingFriends)>0){
             $string = '';
             foreach($StrugglingFriends as $key=>$value){
-                $string .= $value.' ';
+                $string .= $this->getPronunciation($value).'<break time="0.5s"/>';
             }
-            $text = $string.',please check sprint progress.';
-            $data['voiceUrl'] = $this->polly($text,'text');
+            $text = '<speak>'.$string.',please check sprint progress.</speak>';
+            $data['voiceUrl'] = $this->polly($text);
             $data['name'] = $StrugglingFriends;
             $res = $this->push($data,'am10checked-event');
         }
@@ -318,7 +341,7 @@ class HomeController extends Controller
     public function PunchEvent()
     {
         $text = '<speak>Please Da Ka<break time="0.5s" />Please Da Ka Please Da Ka</speak>';
-        $data['voiceUrl'] = $this->polly($text);
+        $data['voiceUrl'] = 'https://s3.us-west-2.amazonaws.com/multiverse.upload/1511951469-polly.mp3';
         $this->push($data,'punch-event');
         print_r($data);
     }
@@ -437,7 +460,7 @@ class HomeController extends Controller
 
                 }else{
                     $data['voiceUrl'] = $this->polly($request->text,'text');
-                    $this->push($data,'punch-event');
+                    $this->push($data,'play-voice-event');
                 }
             }else{
 
@@ -445,5 +468,138 @@ class HomeController extends Controller
         }
 
         return view('sendMsg');
+    }
+    /*
+     *
+     * 获取接近中文发音的英文名
+     * */
+    public function getPronunciation($name)
+    {
+        /*HePingChuan => NekoPara
+        Alexis => Alexis
+        ccw => ccw
+        chenggong => Brother Gong
+        ChenQiaMing => Charmin
+        chenquanhong => chen chuen hong
+        Emil Wong => Emil
+        Freeman Fan => Freeman
+        jinlinhan => lin han
+        Jiwon Kang => Jiwon
+        lianghaoming => hao ming
+        liangjifen => tsi fen
+        LIBO => LI BO
+        LiuFan => Lio Fan
+        penggaohua => Our best tester ever
+        PQ => PQ
+        xucheng => dja dja cheng
+        xuyi => tsu yi
+        Yohan => Yohan
+        ZengZhiXiong => da siong
+        Zhang DaoYang => Eric
+        徐铭泽 => Lynch
+        xiongfei => tsiong fei*/
+/*        ['name'=>'alexis', 'displayName'=>'alexis'],
+            ['name'=>'644633115','displayName'=>'lianghaoming'],
+            ['name'=>'azoom11131','displayName'=>'ZengZhiXiong'],
+            ['name'=>'blinkseedcitrus','displayName'=>'HePingChuan'],
+            ['name'=>'chenggong19890215','displayName'=>'chenggong'],
+            ['name'=>'chenquanhong86','displayName'=>'chenquanhong'],
+            ['name'=>'"Chenwen Chen"','displayName'=>'ccw'],
+            ['name'=>'emptyxu','displayName'=>'xuyi'],
+            ['name'=>'eric1990zhang','displayName'=>'Zhang DaoYang'],
+            ['name'=>'haomajf','displayName'=>'liangjifen'],
+            ['name'=> 'huang.zacc','displayName'=>'Zachary Huang'],
+            ['name'=>'huskycharmin','displayName'=>'ChenQiaMing'],
+            ['name'=>'jinlinhan11111','displayName'=>'jinlinhan'],
+            ['name'=>'jiwon','displayName'=>'Jiwon Kang'],
+            ['name'=>'leebo2012','displayName'=>'LIBO'],
+            ['name'=>'liufan331','displayName'=>'LiuFan'],
+            ['name'=>'lynch.xu','displayName'=>'lynch'],
+            ['name'=>'penggaohua2017','displayName'=>'penggaohua'],
+            ['name'=>'pengqian9086','displayName'=>'PQ'],
+            ['name'=>'xiongfei8548','displayName'=>'XIONG FEI'],
+            ['name'=>'xucheng93161','displayName'=>'xucheng'],
+            ['name'=> 'yohan.duval','displayName'=>'Yohan'],*/
+        switch ($name)
+        {
+            case 'alexis':
+                return 'alexis';
+                break;
+            case 'ccw':
+                return 'ccw';
+                break;
+            case 'chenggong':
+                return 'Brother Gong';
+                break;
+            case 'chenquanhong':
+                return 'chen chuen hong';
+                break;
+            case 'HePingChuan':
+                return 'NekoPara';
+                break;
+            case 'xuyi':
+                return 'tsu yi';
+                break;
+            case 'Zhang DaoYang':
+                return 'Eric';
+                break;
+            case 'liangjifen':
+                return 'tsi fen';
+                break;
+            case 'Zachary Huang':
+                return '';
+                break;
+            case 'ChenQiaMing':
+                return 'Charmin';
+                break;
+            case 'jinlinhan':
+                return 'lin han';
+                break;
+            case 'Jiwon Kang':
+                return 'Jiwon';
+                break;
+            case 'LIBO':
+                return 'LI BO';
+                break;
+            case 'LiuFan':
+                return 'Lio Fan';
+                break;
+            case 'lynch':
+                return 'Lynch';
+                break;
+            case 'penggaohua':
+                return 'Our best tester ever';
+                break;
+            case 'PQ':
+                return 'PQ';
+                break;
+            case 'XIONG FEI':
+                return 'tsiong fei';
+                break;
+            case 'xucheng':
+                return 'dja dja cheng';
+                break;
+            case 'Yohan':
+                return 'Yohan';
+                break;
+            case 'lianghaoming':
+                return 'hao ming';
+                break;
+            case 'ZengZhiXiong':
+                return 'da siong';
+                break;
+            case 'Freeman Fan':
+                return 'Freeman';
+                break;
+            case 'Emil Wong':
+                return 'Emil';
+                break;
+        }
+    }
+
+    public function test()
+    {
+       $res = $this->getPronunciation('XIONG FEIi');
+       dd($res);
     }
 }

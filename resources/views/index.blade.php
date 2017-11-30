@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    <audio src="" id="audio"></audio>
+    <audio id="audio" autoplay="autoplay"></audio>
     </body>
     <script src="/js/jQuery-3.2.1.min.js"></script>
     <script src="/layui/layui.all.js"></script>
@@ -90,14 +90,22 @@
         })(document, window);
     </script>
     <script>
-        /*var audioPlay = new function (Src) {
-            this.Src = array();
-            this._audio = document.getElementById('audio');
-            arrayPush(this.Src,Src)
-            this.Src.forEach(function (e) {
-                console.log(e)
-            })
-        }*/
+        Array.prototype.removeByValue = function(val) {
+            for(var i=0; i<this.length; i++) {
+                if(this[i] == val) {
+                    this.splice(i, 1);
+                    break;
+                }
+            }
+        }
+        var x = document.getElementById("audio");
+        function playAudio(e) {
+            console.log(x)
+            x.pause()
+            x.src = e;
+            x.load();
+        }
+
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
@@ -107,10 +115,9 @@
         });
         var reopened = document.getElementById('reopened-list');
         var channel = pusher.subscribe('my-channel');
-        var x = document.getElementById("audio");
+
         channel.bind('my-event', function(data) {
-            x.src = data.voiceUrl;
-            x.play();
+            playAudio(data.voiceUrl);
             if (data.toString == 'Done'){
                 $("#done-list").prepend(`
                     <li class="layui-anim layui-anim-upbit">
@@ -140,8 +147,7 @@
             }
         });
         channel.bind('build-project-event', function(data){
-            x.src = data.voiceUrl;
-            x.play();
+            playAudio(data.voiceUrl);
             if(data.event == 'success'){
                 $("#build-project-area").prepend(`
                     <li class="success">
@@ -160,18 +166,15 @@
         })
         //打卡事件
         channel.bind('punch-event', function(data){
-            x.src = data.voiceUrl;
-            x.play();
+            playAudio(data.voiceUrl);
         })
         //
         channel.bind('play-voice-event', function(data){
-            x.src = data.voiceUrl;
-            x.play();
+            playAudio(data.voiceUrl);
         })
         // am10 event
         channel.bind('am10checked-event', function(data){
-            x.src = data.voiceUrl;
-            x.play();
+            playAudio(data.voiceUrl);
             var string = '';
             for (var i in data.name){
                 string += '<li class="layui-col-md6">'+ i +'</li>'
@@ -180,8 +183,7 @@
         })
         // pm5:30 event
         channel.bind('done-issue-checked-event', function(data){
-            x.src = data.voiceUrl;
-            x.play();
+            x.playAudio(data.voiceUrl);
             var string = '';
             for (var i in data.name){
                 string += '<li class="layui-col-md6">'+ i +'</li>'
