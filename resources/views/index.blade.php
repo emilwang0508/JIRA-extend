@@ -101,7 +101,7 @@
         var x = document.getElementById("audio");
         function playAudio(e) {
             console.log(x)
-            x.pause()
+//            x.pause()
             x.src = e;
             x.load();
         }

@@ -110,14 +110,18 @@ class HomeController extends Controller
             $options
         );
         ($issue->tester_name == '')?$repoter = $issue->reporter_name: $repoter = $issue->tester_name;
+        $user_name = "";
+        $assignee_name = '';
+        $this->getPronunciation($issue->user_name)!==null?$user_name = $this->getPronunciation($issue->user_name) :$user_nam= $issue->user_name;
+        $this->getPronunciation($repoter)!==null?$repoter = $this->getPronunciation($repoter) :$repoter = $repoter;
+        $this->getPronunciation($issue->assignee_name)!==null?$assignee_name = $this->getPronunciation($issue->assignee_name) :$assignee_name = $issue->assignee_name;
         if($issue->toString == 'Done'){
-            $message = '<speak>'.$this->getPronunciation($issue->user_name)||$issue->user_name.' task done.<break time="0.5s" />'.$repoter." please check.</speak>";
+            $message = '<speak>'.$user_name.' task done.<break time="0.5s" />'.$repoter." please check.</speak>";
         }
         if ($issue->toString == 'Reopened'){
-            $message = '<speak>'.$this->getPronunciation($issue->assignee_name)." task reopened.</speak>";
+            $message = '<speak>'.$assignee_name." task reopened.</speak>";
         }
         $data['message'] = $message;
-        print_r($message);
         $data['voiceUrl'] =  $this->polly($message);
         $data['toString'] = $issue->toString;
         $data['fromString'] = $issue->fromString;
@@ -320,13 +324,13 @@ xiongfei => tsiong fei*/
                 }
             }
         }
-
         // 拼接语音字符串
         if (count($StrugglingFriends)>0){
             $string = '';
             foreach($StrugglingFriends as $key=>$value){
                 $string .= $this->getPronunciation($value).'<break time="0.5s"/>';
             }
+
             $text = '<speak>'.$string.',please check sprint progress.</speak>';
             $data['voiceUrl'] = $this->polly($text);
             $data['name'] = $StrugglingFriends;
