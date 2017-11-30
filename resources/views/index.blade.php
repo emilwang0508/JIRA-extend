@@ -183,7 +183,7 @@
         })
         // pm5:30 event
         channel.bind('done-issue-checked-event', function(data){
-            x.playAudio(data.voiceUrl);
+            playAudio(data.voiceUrl);
             var string = '';
             for (var i in data.name){
                 string += '<li class="layui-col-md6">'+ i +'</li>'
