@@ -61,7 +61,7 @@ class Kernel extends ConsoleKernel
             if ($res->voiceUrl==''){
                 $res = $client->request('GET',$url);
             }
-        })->timezone('Asia/Shanghai')->weekdays()->everyFiveMinutes();
+        })->weekdays()->everyFiveMinutes();
     }
 
     /**
