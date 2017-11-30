@@ -90,6 +90,11 @@
         })(document, window);
     </script>
     <script>
+        //定义一个数组
+
+        var _index = 0;
+        var arr = []
+        var x = document.getElementById('audio')
         Array.prototype.removeByValue = function(val) {
             for(var i=0; i<this.length; i++) {
                 if(this[i] == val) {
@@ -98,13 +103,35 @@
                 }
             }
         }
-        var x = document.getElementById("audio");
-        function playAudio(e) {
-            console.log(x)
-//            x.pause()
-            x.src = e;
-            x.load();
+        function playAudio() {
+            if(x.ended === false){
+                console.log(arr)
+                x.src = arr[0];
+                x.load()
+            }
+            if(x.ended === true){
+                arr.removeByValue(arr[0])
+            }
         }
+        x.addEventListener('ended',function () {
+
+            if(arr.length!==0){
+                console.log(x.ended)
+                playAudio()
+            }else {
+                return false;
+            }
+        })
+        /*x.addEventListener('ended',function () {
+            arr.removeByValue(arr[0])
+            if(arr.length!==0){
+                playAudio()
+            }else {
+                return false;
+            }
+        },function () {
+            setTimeout(playAudio(),x.duration*1000)
+        })*/
 
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
@@ -166,7 +193,8 @@
         })
         //打卡事件
         channel.bind('punch-event', function(data){
-            playAudio(data.voiceUrl);
+            arr.push(data.voiceUrl)
+            playAudio()
         })
         //
         channel.bind('play-voice-event', function(data){

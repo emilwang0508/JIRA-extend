@@ -344,8 +344,9 @@ xiongfei => tsiong fei*/
      * */
     public function PunchEvent()
     {
-        $text = '<speak>Please Da Ka<break time="0.5s" />Please Da Ka Please Da Ka</speak>';
-        $data['voiceUrl'] = 'https://s3.us-west-2.amazonaws.com/multiverse.upload/1511951469-polly.mp3';
+        $text = '<speak>Please Da Ka<break time="0.5s" />Please Da Ka Please Da Ka<break time="1s"/></speak>';
+        $data['voiceUrl'] = 'https://s3.us-west-2.amazonaws.com/multiverse.upload/1512026215-polly.mp3 ';
+//        $data['voiceUrl'] = $this->polly($text);
         $this->push($data,'punch-event');
         print_r($data);
     }
