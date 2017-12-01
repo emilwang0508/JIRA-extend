@@ -61,7 +61,10 @@ class Kernel extends ConsoleKernel
             if ($res->voiceUrl==''){
                 $res = $client->request('GET',$url);
             }
-        })->weekdays()->everyFiveMinutes();
+        })->weekdays()
+            ->everyFiveMinutes()
+            ->unlessBetween('09:25', '09:50')
+            ->unlessBetween('12:00', '14:00');
     }
 
     /**

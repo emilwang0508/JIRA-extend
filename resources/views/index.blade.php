@@ -103,7 +103,7 @@
                 }
             }
         }
-        function playAudio() {
+        /*function playAudio() {
             if(x.ended === false){
                 console.log(arr)
                 x.src = arr[0];
@@ -112,6 +112,11 @@
             if(x.ended === true){
                 arr.removeByValue(arr[0])
             }
+        }*/
+        function playAudio(e) {
+                console.log(e)
+                x.src = e;
+                x.load()
         }
         x.addEventListener('ended',function () {
 
@@ -193,8 +198,8 @@
         })
         //打卡事件
         channel.bind('punch-event', function(data){
-            arr.push(data.voiceUrl)
-            playAudio()
+//            arr.push(data.voiceUrl)
+            playAudio(data.voiceUrl)
         })
         //
         channel.bind('play-voice-event', function(data){
