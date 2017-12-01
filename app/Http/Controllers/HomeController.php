@@ -216,6 +216,7 @@ class HomeController extends Controller
      * */
     public function todoChecked()
     {
+
         $jql = 'project = SD AND status = "To Do" AND Sprint = '.env('SPRINT_ID').' AND assignee in (EMPTY) order by lastViewed DESC';
         $res = $this->jira($jql);
         $total = $res->total;//获得任务数组
@@ -606,7 +607,12 @@ xiongfei => tsiong fei*/
 
     public function test()
     {
-       $res = $this->getPronunciation('');
-       dd($res);
+/*        $breakTime = "[{'start_time': '9: 30', 'end_time: ''9: 45'},{'start_time': '12: 00','end_time': '14: 00'}]";
+        $breakTime = eval($breakTime);
+        dd($breakTime);
+        foreach ($breakTime as $i){
+            dd($i);
+        }*/
+
     }
 }
