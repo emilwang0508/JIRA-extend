@@ -575,7 +575,7 @@ xiongfei => tsiong fei*/
                 return 'Lynch';
                 break;
             case 'penggaohua':
-                return 'Our best tester ever';
+                return 'GAO';
                 break;
             case 'PQ':
                 return 'PQ';
