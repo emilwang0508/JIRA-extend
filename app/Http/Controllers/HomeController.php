@@ -110,6 +110,7 @@ class HomeController extends Controller
             $options
         );
         ($issue->tester_name == '')?$repoter = $issue->reporter_name: $repoter = $issue->tester_name;
+        $data['reporterName'] = $repoter;
         $user_name = "";
         $assignee_name = '';
         $this->getPronunciation($issue->user_name)!==null?$user_name = $this->getPronunciation($issue->user_name) :$user_nam= $issue->user_name;
@@ -130,7 +131,7 @@ class HomeController extends Controller
         $data['projectKey'] = $issue->project_key;
         $data['userName'] = $issue->user_name;
         $data['summary'] = $issue->summary;
-        $data['reporterName'] = $repoter;
+
         $data['assigneeName'] = $issue->assignee_name;
         $data['issueKey'] = $issue->key;
         $pusher->trigger('my-channel', 'my-event', $data);
