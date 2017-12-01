@@ -118,7 +118,7 @@
                 x.src = e;
                 x.load()
         }
-        x.addEventListener('ended',function () {
+       /* x.addEventListener('ended',function () {
 
             if(arr.length!==0){
                 console.log(x.ended)
@@ -126,7 +126,7 @@
             }else {
                 return false;
             }
-        })
+        })*/
         /*x.addEventListener('ended',function () {
             arr.removeByValue(arr[0])
             if(arr.length!==0){

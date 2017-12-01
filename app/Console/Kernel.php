@@ -63,7 +63,7 @@ class Kernel extends ConsoleKernel
             }
         })->weekdays()
             ->everyFiveMinutes()
-            ->unlessBetween('09:25', '09:50')
+            ->unlessBetween('09:26', '09:49')
             ->unlessBetween('12:00', '14:00');
     }
 
