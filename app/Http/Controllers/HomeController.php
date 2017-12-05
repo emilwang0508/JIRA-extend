@@ -500,7 +500,7 @@ class HomeController extends Controller
                 return 'LI BO';
                 break;
             case 'LiuFan':
-                return 'Lio Fan';
+                return 'LF';
                 break;
             case 'lynch':
                 return 'Lynch';
