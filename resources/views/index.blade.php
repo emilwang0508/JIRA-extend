@@ -8,10 +8,9 @@
         <title>JIRA Extend</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/layui/css/layui.css">
         <link rel="stylesheet" href="/css/app.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.css" />
+        <link rel="stylesheet" type="text/css" href="/fullPage/jquery.fullpage.css" />
     </head>
     <body>
     <div id="fullpage">
@@ -38,15 +37,14 @@
         </div>
         <div class="section">
             <div id="amEvent" class="layui-col-md6">
-                <p class="title" id="amEventTilte">10:00</p>
+                <p class="title" id="amEventTilte">需要加快进度</p>
                 <ul  id="am">
 
                 </ul>
             </div>
             <div id="pmEvent" class="layui-col-md6">
-                <p class="title" id="pmEventTilte">17:30</p>
+                <p class="title" id="pmEventTilte">需要验收任务</p>
                 <ul id="pm" >
-
                 </ul>
             </div>
 
@@ -64,9 +62,9 @@
 
 
     <!-- This following line is only necessary in the case of using the option `scrollOverflow:true` -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/vendors/scrolloverflow.min.js"></script>
+    <script type="text/javascript" src="/fullPage/scrolloverflow.min.js"></script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.js"></script>
+    <script type="text/javascript" src="/fullPage/jquery.fullpage.js"></script>
 
     <script>
         // “()()”表示自执行函数

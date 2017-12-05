@@ -162,24 +162,29 @@ ul#done-list li{
   bottom: 0.5rem;
 }
 #amEvent,#pmEvent{
-  background: url(/images/event_bg.png) no-repeat center;
-  height: 13rem;
+  background: url(/images/event_bg.png) no-repeat 50%;
+  height: calc(100% - 1rem);
   position: relative;
+  margin: .5rem 10px;
   background-size: contain;
-  margin-top: 2rem;
-  padding: 0 3rem;
+  width: calc(50% - 20px)!important;
   .title{
     font-size: 0.9rem;
     text-align: center;
-    margin: 0.5rem 0;
     font-weight: bold;
+    line-height: 3rem;
+  }
+  ul{
+    padding: 0.1rem 0.8rem;
   }
   li{
     text-align: left;
-    font-size: .6rem;
-    text-indent: 0.2rem;
+    font-size: 1.1rem;
+    text-indent: 0.5rem;
     overflow: hidden;
     color: #fff000;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   .avatar{
     width: 0.4rem;
