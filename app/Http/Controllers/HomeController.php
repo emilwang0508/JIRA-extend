@@ -221,7 +221,8 @@ class HomeController extends Controller
         $jql = 'project = SD AND status = "To Do" AND Sprint = '.env('SPRINT_ID').' AND assignee in (EMPTY) order by lastViewed DESC';
         $res = $this->jira($jql);
         $total = $res->total;//获得任务数组
-        if ($total!==0){
+        $result = $this->isPeriodOfTime('12:00','14:00');
+        if ($total!==0&&$result===true){
             $data['voiceUrl'] = 'https://s3.us-west-2.amazonaws.com/multiverse.upload/1512446403-polly.mp3';
             $res = $this->push($data,'play-voice-event');
             dd($res);
@@ -277,29 +278,6 @@ class HomeController extends Controller
             ['name'=>'xucheng93161','displayName'=>'xucheng'],
             ['name'=> 'yohan.duval','displayName'=>'Yohan'],
         ];
-/*        HePingChuan => NekoPara
-Alexis => Alexis
-ccw => ccw
-chenggong => Brother Gong
-ChenQiaMing => Charmin
-chenquanhong => chen chuen hong
-Emil Wong => Emil
-Freeman Fan => Freeman
-jinlinhan => lin han
-Jiwon Kang => Jiwon
-lianghaoming => hao ming
-liangjifen => tsi fen
-LIBO => LI BO
-LiuFan => Lio Fan
-penggaohua => Our best tester ever
-PQ => PQ
-xucheng => dja dja cheng
-xuyi => tsu yi
-Yohan => Yohan
-ZengZhiXiong => da siong
-Zhang DaoYang => Eric
-徐铭泽 => Lynch
-xiongfei => tsiong fei*/
         $StrugglingFriends = array();
         foreach ($friends as $friend){
             $name = $friend["name"];
@@ -480,51 +458,6 @@ xiongfei => tsiong fei*/
      * */
     public function getPronunciation($name)
     {
-        /*HePingChuan => NekoPara
-        Alexis => Alexis
-        ccw => ccw
-        chenggong => Brother Gong
-        ChenQiaMing => Charmin
-        chenquanhong => chen chuen hong
-        Emil Wong => Emil
-        Freeman Fan => Freeman
-        jinlinhan => lin han
-        Jiwon Kang => Jiwon
-        lianghaoming => hao ming
-        liangjifen => tsi fen
-        LIBO => LI BO
-        LiuFan => Lio Fan
-        penggaohua => Our best tester ever
-        PQ => PQ
-        xucheng => dja dja cheng
-        xuyi => tsu yi
-        Yohan => Yohan
-        ZengZhiXiong => da siong
-        Zhang DaoYang => Eric
-        徐铭泽 => Lynch
-        xiongfei => tsiong fei*/
-/*        ['name'=>'alexis', 'displayName'=>'alexis'],
-            ['name'=>'644633115','displayName'=>'lianghaoming'],
-            ['name'=>'azoom11131','displayName'=>'ZengZhiXiong'],
-            ['name'=>'blinkseedcitrus','displayName'=>'HePingChuan'],
-            ['name'=>'chenggong19890215','displayName'=>'chenggong'],
-            ['name'=>'chenquanhong86','displayName'=>'chenquanhong'],
-            ['name'=>'"Chenwen Chen"','displayName'=>'ccw'],
-            ['name'=>'emptyxu','displayName'=>'xuyi'],
-            ['name'=>'eric1990zhang','displayName'=>'Zhang DaoYang'],
-            ['name'=>'haomajf','displayName'=>'liangjifen'],
-            ['name'=> 'huang.zacc','displayName'=>'Zachary Huang'],
-            ['name'=>'huskycharmin','displayName'=>'ChenQiaMing'],
-            ['name'=>'jinlinhan11111','displayName'=>'jinlinhan'],
-            ['name'=>'jiwon','displayName'=>'Jiwon Kang'],
-            ['name'=>'leebo2012','displayName'=>'LIBO'],
-            ['name'=>'liufan331','displayName'=>'LiuFan'],
-            ['name'=>'lynch.xu','displayName'=>'lynch'],
-            ['name'=>'penggaohua2017','displayName'=>'penggaohua'],
-            ['name'=>'pengqian9086','displayName'=>'PQ'],
-            ['name'=>'xiongfei8548','displayName'=>'XIONG FEI'],
-            ['name'=>'xucheng93161','displayName'=>'xucheng'],
-            ['name'=> 'yohan.duval','displayName'=>'Yohan'],*/
         switch ($name)
         {
             case 'alexis':
@@ -603,15 +536,26 @@ xiongfei => tsiong fei*/
                 return $name;
         }
     }
-
+    /*
+     * 判断当前时间是否在当天的某一时间段内
+     * 
+     * */
+//    public function isPeriodOfTime($startTime,$endTime)
+    public function isPeriodOfTime($startTime,$endTime)
+    {
+        $current_date = date('Y-m-d',time());
+        $start = strtotime($current_date.$startTime);
+        $end = strtotime($current_date.$endTime);
+        $current_time = time();
+        if ($current_time>=$start&&$current_time<=$end){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public function test()
     {
-/*        $breakTime = "[{'start_time': '9: 30', 'end_time: ''9: 45'},{'start_time': '12: 00','end_time': '14: 00'}]";
-        $breakTime = eval($breakTime);
-        dd($breakTime);
-        foreach ($breakTime as $i){
-            dd($i);
-        }*/
-
+       $res =  $this->isPeriodOfTime('09:10','12:00');
+       dd($res===true);
     }
 }

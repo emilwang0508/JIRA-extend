@@ -63,8 +63,8 @@ class Kernel extends ConsoleKernel
             }
         })->weekdays()
             ->everyFiveMinutes()
-            ->between('9:50', '22:00')
-            ->unlessBetween('12:00', '14:00');
+            ->timezone('Asia/Shanghai')
+            ->between('9:50', '22:00');
     }
 
     /**
