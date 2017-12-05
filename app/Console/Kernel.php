@@ -62,9 +62,9 @@ class Kernel extends ConsoleKernel
                 $res = $client->request('GET',$url);
             }
         })->weekdays()
-            ->unlessBetween('09:26', '09:49')
-            ->unlessBetween('12:00', '14:00')
-            ->everyFiveMinutes();
+            ->everyFiveMinutes()
+            ->between('9:50', '22:00')
+            ->unlessBetween('12:00', '14:00');
     }
 
     /**
