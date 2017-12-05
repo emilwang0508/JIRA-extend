@@ -217,7 +217,7 @@
             $("#am").append(string);
             var amInterval = setInterval(function(){   //定时器 五秒一执行
                 $.fn.fullpage.moveSectionDown();  //向下滚动
-            }, 5000);
+            }, 10000);
             setTimeout(function () {
                 clearInterval(amInterval)
                 $.fn.fullpage.moveTo('#firstPage')
@@ -230,10 +230,11 @@
             for (var i in data.name){
                 string += '<li class="layui-col-md6">'+ i +'</li>'
             }
+            $("#pm").html('')
             $("#pm").append(string);
             var pmInterval = setInterval(function(){   //定时器 五秒一执行
                 $.fn.fullpage.moveSectionDown();  //向下滚动
-            }, 5000);
+            }, 10000);
             setTimeout(function () {
                 clearInterval(pmInterval)
                 $.fn.fullpage.moveTo('#firstPage')
