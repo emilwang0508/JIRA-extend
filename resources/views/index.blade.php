@@ -213,6 +213,13 @@
                 string += '<li class="layui-col-md6">'+ i +'</li>'
             }
             $("#am").append(string);
+            var amInterval = setInterval(function(){   //定时器 五秒一执行
+                $.fn.fullpage.moveSectionDown();  //向下滚动
+            }, 5000);
+            setTimeout(function () {
+                clearInterval(amInterval)
+                $.fn.fullpage.moveTo('#firstPage')
+            },1800000)
         })
         // pm5:30 event
         channel.bind('done-issue-checked-event', function(data){
@@ -222,6 +229,13 @@
                 string += '<li class="layui-col-md6">'+ i +'</li>'
             }
             $("#pm").append(string);
+            var pmInterval = setInterval(function(){   //定时器 五秒一执行
+                $.fn.fullpage.moveSectionDown();  //向下滚动
+            }, 5000);
+            setTimeout(function () {
+                clearInterval(pmInterval)
+                $.fn.fullpage.moveTo('#firstPage')
+            },1800000)
         })
     </script>
     <script>
@@ -239,8 +253,13 @@
                 slidesNavPosition: 'bottom',
                 verticalCentered:false,
                 setAutoScrolling: true,
-                scrollOverflow: true
+                scrollOverflow: true,
+                setScrollingSpeed:3000,
+                continuousVertical: true
             });
+            /*setInterval(function(){   //定时器 三秒一执行
+                $.fn.fullpage.moveSectionDown();  //向下滚动
+            }, 5000);*/
         });
     </script>
 </html>

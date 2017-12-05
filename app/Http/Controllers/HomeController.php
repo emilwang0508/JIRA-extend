@@ -68,9 +68,9 @@ class HomeController extends Controller
             $issue->reporter_key = $fields['reporter']['key'];
             $issue->reporter_name = $fields['reporter']['displayName'];
             //issue
-            if (array_key_exists('tester',$fields)){
-                $issue->tester_key = $fields['tester']['key'];
-                $issue->tester_name = $fields['tester']['displayName'];
+            if (array_key_exists('customfield_10034',$fields)){
+                $issue->tester_key = $fields['customfield_10034']['key'];
+                $issue->tester_name = $fields['customfield_10034']['displayName'];
             }else{
                 $issue->tester_key = '';
                 $issue->tester_name = '';
@@ -109,7 +109,7 @@ class HomeController extends Controller
             env('PUSHER_APP_ID'),
             $options
         );
-        ($issue->tester_name == '')?$repoter = $issue->reporter_name: $repoter = $issue->tester_name;
+        ($issue->tester_name == ''||$issue->tester_name==null)?$repoter = $issue->reporter_name: $repoter = $issue->tester_name;
         $data['reporterName'] = $repoter;
         $user_name = "";
         $assignee_name = '';
