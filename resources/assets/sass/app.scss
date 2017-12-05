@@ -177,8 +177,17 @@ ul#done-list li{
   li{
     text-align: left;
     font-size: .6rem;
-    text-indent: 1rem;
+    text-indent: 0.2rem;
     overflow: hidden;
     color: #fff000;
+  }
+  .avatar{
+    width: 0.4rem;
+    height: 0.4rem;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 0.2rem;
+    background-size: cover;
+    overflow: hidden;
   }
 }

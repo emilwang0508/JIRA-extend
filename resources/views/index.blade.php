@@ -40,7 +40,7 @@
             <div id="amEvent" class="layui-col-md6">
                 <p class="title" id="amEventTilte">10:00</p>
                 <ul  id="am">
-
+                    <li class="layui-col-md6"><span class="avatar"></span>FREEMAN</li>
                 </ul>
             </div>
             <div id="pmEvent" class="layui-col-md6">
@@ -118,26 +118,6 @@
                 x.src = e;
                 x.load()
         }
-       /* x.addEventListener('ended',function () {
-
-            if(arr.length!==0){
-                console.log(x.ended)
-                playAudio()
-            }else {
-                return false;
-            }
-        })*/
-        /*x.addEventListener('ended',function () {
-            arr.removeByValue(arr[0])
-            if(arr.length!==0){
-                playAudio()
-            }else {
-                return false;
-            }
-        },function () {
-            setTimeout(playAudio(),x.duration*1000)
-        })*/
-
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
@@ -257,7 +237,7 @@
                 verticalCentered:false,
                 setAutoScrolling: true,
                 scrollOverflow: true,
-                setScrollingSpeed:3000,
+                setScrollingSpeed:10000,
                 continuousVertical: true
             });
             /*setInterval(function(){   //定时器 三秒一执行
