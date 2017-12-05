@@ -222,7 +222,7 @@ class HomeController extends Controller
         $res = $this->jira($jql);
         $total = $res->total;//获得任务数组
         $result = $this->isPeriodOfTime('12:00','14:00');
-        if ($total!==0&&$result===true){
+        if ($total!==0&&$result!==true){
             $data['voiceUrl'] = 'https://s3.us-west-2.amazonaws.com/multiverse.upload/1512446403-polly.mp3';
             $res = $this->push($data,'play-voice-event');
             dd($res);
