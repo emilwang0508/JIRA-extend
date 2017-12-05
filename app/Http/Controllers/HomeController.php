@@ -222,9 +222,7 @@ class HomeController extends Controller
         $res = $this->jira($jql);
         $total = $res->total;//获得任务数组
         if ($total!==0){
-            $text = '<speak>Please volunteer for unassigned task.</speak>';
-            $voiceUrl = $this->polly($text);
-            $data['voiceUrl'] = $voiceUrl;
+            $data['voiceUrl'] = 'https://s3.us-west-2.amazonaws.com/multiverse.upload/1512446403-polly.mp3';
             $res = $this->push($data,'play-voice-event');
             dd($res);
         }
