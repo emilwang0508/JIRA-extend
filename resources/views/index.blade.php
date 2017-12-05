@@ -209,9 +209,11 @@
         channel.bind('am10checked-event', function(data){
             playAudio(data.voiceUrl);
             var string = '';
-            for (var i in data.name){
-                string += '<li class="layui-col-md6">'+ i +'</li>'
-            }
+            data.name = ["alexis","ZengZhiXiong","HePingChuan","chenquanhong","ccw","Zhang DaoYang","liangjifen","Zachary Huang","ChenQiaMing","jinlinhan","Jiwon Kang","LIBO","LiuFan","PQ","xucheng"]
+            data.name.forEach(function (e) {
+                string += '<li class="layui-col-md6">'+ e +'</li>'
+            })
+            $("#am").html('')
             $("#am").append(string);
             var amInterval = setInterval(function(){   //定时器 五秒一执行
                 $.fn.fullpage.moveSectionDown();  //向下滚动
