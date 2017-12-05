@@ -40,7 +40,7 @@
             <div id="amEvent" class="layui-col-md6">
                 <p class="title" id="amEventTilte">10:00</p>
                 <ul  id="am">
-                    <li class="layui-col-md6"><span class="avatar"></span>FREEMAN</li>
+
                 </ul>
             </div>
             <div id="pmEvent" class="layui-col-md6">
