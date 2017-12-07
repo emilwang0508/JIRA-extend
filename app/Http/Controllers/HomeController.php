@@ -211,6 +211,7 @@ class HomeController extends Controller
         $voiceUrl = $this->polly($text);
         $data['voiceUrl'] = $voiceUrl;
         $res = $this->push($data,'done-issue-checked-event');
+        return $data;
     }
     /*
      * 本sprint有任务超过1小时无人接取，会每隔5分钟语音播报“编号A、B、C任务超过1h无人接取，请技术人员尽快处理”。
@@ -225,6 +226,7 @@ class HomeController extends Controller
         if ($total!==0&&$result!==true){
             $data['voiceUrl'] = 'https://s3.us-west-2.amazonaws.com/multiverse.upload/1512446403-polly.mp3';
             $res = $this->push($data,'play-voice-event');
+            return $data;
         }
 
     }
@@ -312,6 +314,7 @@ class HomeController extends Controller
             $data['voiceUrl'] = $this->polly($text);
             $data['name'] = $StrugglingFriends;
             $res = $this->push($data,'am10checked-event');
+            return $data;
         }
 
 
@@ -325,7 +328,7 @@ class HomeController extends Controller
         $data['voiceUrl'] = 'https://s3.us-west-2.amazonaws.com/multiverse.upload/1512026215-polly.mp3 ';
 //        $data['voiceUrl'] = $this->polly($text);
         $this->push($data,'punch-event');
-        print_r($data);
+        return $data;
     }
     /*
      * $jql
@@ -539,7 +542,6 @@ class HomeController extends Controller
      * 判断当前时间是否在当天的某一时间段内
      * 
      * */
-//    public function isPeriodOfTime($startTime,$endTime)
     public function isPeriodOfTime($startTime,$endTime)
     {
         $current_date = date('Y-m-d',time());
