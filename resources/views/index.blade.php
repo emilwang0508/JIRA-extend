@@ -201,7 +201,7 @@
             setTimeout(function () {
                 clearInterval(amInterval)
                 $.fn.fullpage.moveTo('#firstPage',0)
-            },1800000)
+            },1800001)
         })
         // pm5:30 event
         channel.bind('done-issue-checked-event', function(data){
@@ -218,7 +218,7 @@
             setTimeout(function () {
                 clearInterval(pmInterval)
                 $.fn.fullpage.moveTo('#firstPage',0)
-            },1800000)
+            },1800001)
         })
     </script>
     <script>
