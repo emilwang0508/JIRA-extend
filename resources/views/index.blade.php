@@ -15,37 +15,39 @@
     <body>
     <div id="fullpage">
         <div class="section">
-        <div class="layui-row">
-            <div class="layui-col-md5">
-                <h2 class="reopened-title">-REOPENED</h2>
-                <ul id="reopened-list">
+            <div class="slide">
+                <div class="layui-row">
+                    <div class="layui-col-md5">
+                        <h2 class="reopened-title">-REOPENED</h2>
+                        <ul id="reopened-list">
 
-                </ul>
-            </div>
-            <div class="layui-col-md5">
-                <h2 class="done-title">-DONE</h2>
-                <ul id="done-list">
-                </ul>
-            </div>
-            <div class="layui-col-md2">
-                <h2 class="builds-title">-BUILDS</h2>
-                <ul id="build-project-area">
+                        </ul>
+                    </div>
+                    <div class="layui-col-md5">
+                        <h2 class="done-title">-DONE</h2>
+                        <ul id="done-list">
+                        </ul>
+                    </div>
+                    <div class="layui-col-md2">
+                        <h2 class="builds-title">-BUILDS</h2>
+                        <ul id="build-project-area">
 
-                </ul>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
-        <div class="section">
-            <div id="amEvent" class="layui-col-md6">
-                <p class="title" id="amEventTilte">需要加快进度</p>
-                <ul  id="am">
+            <div class="slide">
+                <div id="amEvent" class="layui-col-md6">
+                    <p class="title" id="amEventTilte">需要加快进度</p>
+                    <ul  id="am">
 
-                </ul>
-            </div>
-            <div id="pmEvent" class="layui-col-md6">
-                <p class="title" id="pmEventTilte">需要验收任务</p>
-                <ul id="pm" >
-                </ul>
+                    </ul>
+                </div>
+                <div id="pmEvent" class="layui-col-md6">
+                    <p class="title" id="pmEventTilte">需要验收任务</p>
+                    <ul id="pm" >
+                    </ul>
+                </div>
             </div>
 
         </div>
@@ -193,12 +195,12 @@
             })
             $("#am").html('')
             $("#am").append(string);
-            var amInterval = setInterval(function(){   //定时器 五秒一执行
-                $.fn.fullpage.moveSectionDown();  //向下滚动
+            var amInterval = setInterval(function(){   //定时器 10秒一执行
+                $.fn.fullpage.moveSlideRight();  //向右侧滚动
             }, 10000);
             setTimeout(function () {
                 clearInterval(amInterval)
-                $.fn.fullpage.moveTo('#firstPage')
+                $.fn.fullpage.moveTo('#firstPage',0)
             },1800000)
         })
         // pm5:30 event
@@ -210,12 +212,12 @@
             }
             $("#pm").html('')
             $("#pm").append(string);
-            var pmInterval = setInterval(function(){   //定时器 五秒一执行
-                $.fn.fullpage.moveSectionDown();  //向下滚动
+            var pmInterval = setInterval(function(){   //定时器 10秒一执行
+                $.fn.fullpage.moveSlideRight();  //向右侧滚动
             }, 10000);
             setTimeout(function () {
                 clearInterval(pmInterval)
-                $.fn.fullpage.moveTo('#firstPage')
+                $.fn.fullpage.moveTo('#firstPage',0)
             },1800000)
         })
     </script>
@@ -236,11 +238,10 @@
                 setAutoScrolling: true,
                 scrollOverflow: true,
                 setScrollingSpeed:10000,
-                continuousVertical: true
+                continuousVertical: true,
+                loopHorizontal: true,
+                controlArrowColor:'rgba(0,0,0,0)',
             });
-            /*setInterval(function(){   //定时器 三秒一执行
-                $.fn.fullpage.moveSectionDown();  //向下滚动
-            }, 5000);*/
         });
     </script>
 </html>
