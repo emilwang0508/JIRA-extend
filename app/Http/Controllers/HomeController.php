@@ -225,7 +225,6 @@ class HomeController extends Controller
         if ($total!==0&&$result!==true){
             $data['voiceUrl'] = 'https://s3.us-west-2.amazonaws.com/multiverse.upload/1512446403-polly.mp3';
             $res = $this->push($data,'play-voice-event');
-            dd($res);
         }
 
     }
