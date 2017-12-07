@@ -58,9 +58,6 @@ class Kernel extends ConsoleKernel
             $url = 'http://jira.multiverseinc.com/todoChecked';
             $client = new \GuzzleHttp\Client();
             $res = $client->request('GET',$url);
-            if ($res->voiceUrl==''){
-                $res = $client->request('GET',$url);
-            }
         })->weekdays()
             ->everyFiveMinutes()
             ->timezone('Asia/Shanghai')
