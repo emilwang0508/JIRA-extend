@@ -189,7 +189,6 @@
         channel.bind('am10checked-event', function(data){
             playAudio(data.voiceUrl);
             var string = '';
-            data.name = ["alexis","ZengZhiXiong","HePingChuan","chenquanhong","ccw","Zhang DaoYang","liangjifen","Zachary Huang","ChenQiaMing","jinlinhan","Jiwon Kang","LIBO","LiuFan","PQ","xucheng"]
             data.name.forEach(function (e) {
                 string += '<li class="layui-col-md6">'+ e +'</li>'
             })
@@ -201,7 +200,7 @@
             setTimeout(function () {
                 clearInterval(amInterval)
                 $.fn.fullpage.moveTo('#firstPage',0)
-            },1800001)
+            },1800000)
         })
         // pm5:30 event
         channel.bind('done-issue-checked-event', function(data){
@@ -218,7 +217,7 @@
             setTimeout(function () {
                 clearInterval(pmInterval)
                 $.fn.fullpage.moveTo('#firstPage',0)
-            },1800001)
+            },1800000)
         })
     </script>
     <script>
