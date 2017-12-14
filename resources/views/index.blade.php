@@ -26,6 +26,303 @@
                     <div class="layui-col-md5">
                         <h2 class="done-title">-DONE</h2>
                         <ul id="done-list">
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li><li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+                            <li class="layui-anim layui-anim-upbit">
+                                <div class="project"><div class="key fl">issueKey:</div><div class="summary fl">summary</div></div>
+                                <div class="status">
+                                    <span class="fromName">userName</span>
+                                    <span class="to">TO:</span>
+                                    <span class="toName">reporterName</span>
+                                </div>
+                                <div class="project_key">SD</div>
+                            </li>
+
                         </ul>
                     </div>
                     <div class="layui-col-md2">
@@ -46,6 +343,7 @@
                 <div id="pmEvent" class="layui-col-md6">
                     <p class="title" id="pmEventTilte">需要验收任务</p>
                     <ul id="pm" >
+                        <li class="layui-col-md6"><img class="avatar" src="" alt="">FREEMAN</li>
                     </ul>
                 </div>
             </div>
@@ -53,7 +351,7 @@
         </div>
     </div>
 
-    <audio id="audio" autoplay="autoplay"></audio>
+    <audio id="audio"></audio>
     </body>
     <script src="/js/jQuery-3.2.1.min.js"></script>
     <script src="/layui/layui.all.js"></script>
@@ -117,6 +415,7 @@
                 console.log(e)
                 x.src = e;
                 x.load()
+                x.play()
         }
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
@@ -129,6 +428,11 @@
         var channel = pusher.subscribe('my-channel');
 
         channel.bind('my-event', function(data) {
+            if (isIntime('10:00','10:30')||isIntime('17:30','18:00')){
+                console.log('第二屏')
+            }else {
+                $.fn.fullpage.moveTo('#firstPage',0)
+            }
             playAudio(data.voiceUrl);
             if (data.toString == 'Done'){
                 $("#done-list").prepend(`
@@ -189,8 +493,8 @@
         channel.bind('am10checked-event', function(data){
             playAudio(data.voiceUrl);
             var string = '';
-            data.name.forEach(function (e) {
-                string += '<li class="layui-col-md6">'+ e +'</li>'
+            data.list.forEach(function (e) {
+                string += '<li class="layui-col-md6"><img class="avatar" src="'+ e.avatar["48x48"] +'" alt="avatar">'+ e.name +'</li>'
             })
             $("#am").html('')
             $("#am").append(string);
@@ -206,9 +510,9 @@
         channel.bind('done-issue-checked-event', function(data){
             playAudio(data.voiceUrl);
             var string = '';
-            for (var i in data.name){
-                string += '<li class="layui-col-md6">'+ i +'</li>'
-            }
+            data.list.forEach(function (e) {
+                string += '<li class="layui-col-md6"><img class="avatar" src="'+ e.avatar["48x48"] +'" alt="avatar">'+ e.name +'</li>'
+            })
             $("#pm").html('')
             $("#pm").append(string);
             var pmInterval = setInterval(function(){   //定时器 10秒一执行
@@ -219,6 +523,48 @@
                 $.fn.fullpage.moveTo('#firstPage',0)
             },1800000)
         })
+        // am0:00 event
+        channel.bind('am0-event', function(data){
+            if(data.event='locationReload'){
+                window.location.reload()
+            }
+        })
+        function isIntime(startTime,endTime) {
+            let now = new Date();
+            let year = now.getFullYear();//年
+            let month = now.getMonth() + 1;//月
+            let day = now.getDate();//日期
+
+            let h = now.getHours();//时
+            let m = now.getMinutes();//分
+
+            let date = year + "-";
+            if(month < 10)
+                date += "0";
+
+            date += month + "-";
+
+            if(day < 10)
+                date += "0";
+
+            date += day + " ";
+
+            if(h < 10)
+                date += "0";
+
+            date += h + ":";
+            if (m < 10) date += '0';
+            date += m;
+
+            let startDate = year + '-' + month + '-' + day + ' ' + startTime;
+            let endDate = year + '-' + month + '-' + day + ' ' + endTime;
+            let timestamp  = new Date().valueOf();
+            if (timestamp>(new Date(startDate)).valueOf()&&timestamp<(new Date(endDate)).valueOf()){
+                return true;
+            }else {
+                return false;
+            }
+        }
     </script>
     <script>
         $(document).ready(function() {
@@ -234,7 +580,7 @@
                 slidesNavigation: false,
                 slidesNavPosition: 'bottom',
                 verticalCentered:false,
-                setAutoScrolling: true,
+                setAutoScrolling: false,
                 scrollOverflow: true,
                 setScrollingSpeed:10000,
                 continuousVertical: true,

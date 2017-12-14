@@ -139,10 +139,13 @@ html.fp-enabled,
 #fp-nav ul li,
 .fp-slidesNav ul li {
     display: block;
-    width: 14px;
-    height: 13px;
+/*    width: 14px;
+    height: 13px;*/
     margin: 7px;
     position:relative;
+    width: 25px;
+    height: 10px;
+    background: #999999;
 }
 .fp-slidesNav ul li {
     display: inline-block;
@@ -156,6 +159,9 @@ html.fp-enabled,
     height: 100%;
     cursor: pointer;
     text-decoration: none;
+}
+#fp-nav ul li a.active>li{
+
 }
 #fp-nav ul li a.active span,
 .fp-slidesNav ul li a.active span,

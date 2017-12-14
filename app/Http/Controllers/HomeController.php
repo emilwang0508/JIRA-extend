@@ -192,24 +192,37 @@ class HomeController extends Controller
         $issues = $res->issues;//获得任务数组
         //  定义推送数组
         $datas =  array();
-
+        $list = array();
         foreach ($issues as $issue){
             if (array_key_exists('customfield_10034',$issue->fields->customFields)){
                 array_push($datas,$issue->fields->customFields['customfield_10034']->displayName);
+                $li['name'] = $issue->fields->customFields['customfield_10034']->displayName;
+                $li['avatar'] = $issue->fields->customFields['customfield_10034']->avatarUrls;
+                array_push($list,$li);
             }else{
                 array_push($datas,$issue->fields->reporter->displayName);
+                $li['name'] = $issue->fields->reporter->displayName;
+                $li['avatar'] = $issue->fields->reporter->avatarUrls;
+                array_push($list,$li);
             }
 
         }
+
         $name = array_count_values ($datas);
-        $data['name'] = $name;
+        $datas = array_unique($datas);
+//        $data['name'] = $name;
         $string = '';
+        $temp = array();
+        foreach(array_unique($list,SORT_REGULAR) as $k=>$v){
+            array_push($temp,$v);
+        };
         foreach($name as $k=>$v){
             $string .= $this->getPronunciation($k).'<break time="0.2s" />';
         };
         $text = '<speak>'.$string.'please verify completed tasks.</speak>';
         $voiceUrl = $this->polly($text);
         $data['voiceUrl'] = $voiceUrl;
+        $data['list'] = $temp;
         $res = $this->push($data,'done-issue-checked-event');
         return $data;
     }
@@ -256,7 +269,7 @@ class HomeController extends Controller
     public function amChecked()
     {
         $friends = [
-            ['name'=>'alexis', 'displayName'=>'alexis'],
+            ['name'=>'alexis', 'displayName'=>'alexis','avator'],
             ['name'=>'644633115','displayName'=>'lianghaoming'],
             ['name'=>'azoom11131','displayName'=>'ZengZhiXiong'],
             ['name'=>'blinkseedcitrus','displayName'=>'HePingChuan'],
@@ -288,6 +301,7 @@ class HomeController extends Controller
 
             }
             else{
+                $list = array();
                 $issues = $res->issues;
                 $goingHours = 0;
                 $endDate = strtotime(env('SPRINT_END_DATE'));
@@ -299,7 +313,11 @@ class HomeController extends Controller
                     }
                 }
                 if($goingHours>$remainingWorkingHours){
+
                     array_push($StrugglingFriends,$friend['displayName']);
+                    $li['name'] = $issue->fields->assignee->displayName;
+                    $li['avatar'] = $issue->fields->assignee->avatarUrls;
+                    array_push($list,$li);
                 }
             }
         }
@@ -313,6 +331,8 @@ class HomeController extends Controller
             $text = '<speak>'.$string.',please check sprint progress.</speak>';
             $data['voiceUrl'] = $this->polly($text);
             $data['name'] = $StrugglingFriends;
+            $data['list'] = $list;
+
             $res = $this->push($data,'am10checked-event');
             return $data;
         }
@@ -436,7 +456,7 @@ class HomeController extends Controller
         $res = $iss->search($jql,$startAt,$maxResult);
         return $res;
     }
-
+        
     public function sendMsg(Request $request)
     {
         if($request->isMethod('post')){
@@ -558,5 +578,13 @@ class HomeController extends Controller
     {
        $res =  $this->isPeriodOfTime('09:10','12:00');
        dd($res===true);
+    }
+    /*
+     * 0点事件
+     * */
+    public function am0Event()
+    {
+        $data['event'] = 'locationReload';
+        $this->push($data,'am0-event');
     }
 }

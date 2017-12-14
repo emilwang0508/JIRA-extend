@@ -26,6 +26,7 @@ Route::any('/doneIssueChecked', 'HomeController@doneIssueChecked');
 Route::any('/PunchEvent', 'HomeController@PunchEvent');
 Route::any('/amChecked', 'HomeController@amChecked');
 Route::any('/polly', 'HomeController@polly');
-Route::any('/todoChecked', 'HomeController@todoChecked');
+Route::get('/todoChecked', 'HomeController@todoChecked');
 Route::any('/test', 'HomeController@test');
 Route::any('/sendMsg', 'HomeController@sendMsg');
+Route::any('/am0event', 'HomeController@am0Event');
