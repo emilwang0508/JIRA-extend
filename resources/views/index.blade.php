@@ -225,11 +225,11 @@
             },1800000)
         })
         // am0:00 event
-        channel.bind('am0-event', function(data){
+/*        channel.bind('am0-event', function(data){
             if(data.event='locationReload'){
                 window.location.reload()
             }
-        })
+        })*/
         function isIntime(startTime,endTime) {
             let now = new Date();
             let year = now.getFullYear();//年
