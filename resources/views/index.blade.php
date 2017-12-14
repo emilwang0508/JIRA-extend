@@ -9,7 +9,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="/layui/css/layui.css">
-        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="{{  mix('css/app.css') }}">
         <link rel="stylesheet" type="text/css" href="/fullpage/jquery.fullpage.css" />
     </head>
     <body>
@@ -68,7 +68,6 @@
     <script type="text/javascript" src="/fullpage/scrolloverflow.min.js"></script>
 
     <script type="text/javascript" src="/fullpage/jquery.fullpage.js"></script>
-
     <script>
         // “()()”表示自执行函数
         (function (doc, win) {
@@ -197,7 +196,7 @@
             playAudio(data.voiceUrl);
             var string = '';
             data.list.forEach(function (e) {
-                string += '<li class="layui-col-md6"><img class="avatar" src="'+ e.avatar["48x48"] +'" alt="avatar">'+ e.name +'</li>'
+                string += '<li class="layui-col-md6"><img class="avatar" src="'+ e.avatar["48x48"] +'" alt="avatar" />'+ e.name +'</li>'
             })
             $("#am").html('')
             $("#am").append(string);
@@ -214,7 +213,7 @@
             playAudio(data.voiceUrl);
             var string = '';
             data.list.forEach(function (e) {
-                string += '<li class="layui-col-md6"><img class="avatar" src="'+ e.avatar["48x48"] +'" alt="avatar">'+ e.name +'</li>'
+                string += '<li class="layui-col-md6"><img class="avatar" src="'+ e.avatar["48x48"] +'" alt="avatar" />'+ e.name +'</li>'
             })
             $("#pm").html('')
             $("#pm").append(string);
