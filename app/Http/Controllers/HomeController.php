@@ -293,6 +293,7 @@ class HomeController extends Controller
             ['name'=> 'yohan.duval','displayName'=>'Yohan'],
         ];
         $StrugglingFriends = array();
+        $list = array();
         foreach ($friends as $friend){
             $name = $friend["name"];
             $jql = 'project = SD AND issuetype = Story AND status in ("In Progress", Reopened, "To Do") AND Sprint = '.env('SPRINT_ID').' AND assignee in ('.$name.') order by lastViewed DESC ';
@@ -301,7 +302,7 @@ class HomeController extends Controller
 
             }
             else{
-                $list = array();
+
                 $issues = $res->issues;
                 $goingHours = 0;
                 $endDate = strtotime(env('SPRINT_END_DATE'));
