@@ -193,16 +193,18 @@ class HomeController extends Controller
         //  定义推送数组
         $datas =  array();
         $list = array();
+        $key = '48x48';
         foreach ($issues as $issue){
             if (array_key_exists('customfield_10034',$issue->fields->customFields)){
                 array_push($datas,$issue->fields->customFields['customfield_10034']->displayName);
                 $li['name'] = $issue->fields->customFields['customfield_10034']->displayName;
-                $li['avatar'] = $issue->fields->customFields['customfield_10034']->avatarUrls;
+                $li['avatar'] = $issue->fields->customFields['customfield_10034']->avatarUrls->$key;
                 array_push($list,$li);
             }else{
                 array_push($datas,$issue->fields->reporter->displayName);
+
                 $li['name'] = $issue->fields->reporter->displayName;
-                $li['avatar'] = $issue->fields->reporter->avatarUrls;
+                $li['avatar'] = $issue->fields->reporter->avatarUrls->$key;
                 array_push($list,$li);
             }
 
@@ -294,6 +296,7 @@ class HomeController extends Controller
         ];
         $StrugglingFriends = array();
         $list = array();
+        $key = '48x48';
         foreach ($friends as $friend){
             $name = $friend["name"];
             $jql = 'project = SD AND issuetype = Story AND status in ("In Progress", Reopened, "To Do") AND Sprint = '.env('SPRINT_ID').' AND assignee in ('.$name.') order by lastViewed DESC ';
@@ -317,7 +320,7 @@ class HomeController extends Controller
 
                     array_push($StrugglingFriends,$friend['displayName']);
                     $li['name'] = $issues[0]->fields->assignee->displayName;
-                    $li['avatar'] = $issues[0]->fields->assignee->avatarUrls;
+                    $li['avatar'] = $issues[0]->fields->assignee->avatarUrls->$key;
                     array_push($list,$li);
                 }
             }

@@ -195,7 +195,7 @@
             playAudio(data.voiceUrl);
             var string = '';
             data.list.forEach(function (e) {
-                string += '<li class="layui-col-md6"><img class="avatar" src="'+ e.avatar["48x48"] +'" alt="avatar" />'+ e.name +'</li>'
+                string += '<li class="layui-col-md6"><img class="avatar" src="'+ e.avatar +'" alt="avatar" />'+ e.name +'</li>'
             })
             $("#am").html('')
             $("#am").append(string);
@@ -212,7 +212,7 @@
             playAudio(data.voiceUrl);
             var string = '';
             data.list.forEach(function (e) {
-                string += '<li class="layui-col-md6"><img class="avatar" src="'+ e.avatar["48x48"] +'" alt="avatar" />'+ e.name +'</li>'
+                string += '<li class="layui-col-md6"><img class="avatar" src="'+ e.avatar +'" alt="avatar" />'+ e.name +'</li>'
             })
             $("#pm").html('')
             $("#pm").append(string);
