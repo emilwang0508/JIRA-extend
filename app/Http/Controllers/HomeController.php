@@ -185,65 +185,69 @@ class HomeController extends Controller
      * 若有人满足以上条件，则这些文字会呈红色出现在屏幕上，每分钟刷新一次，直到没有人满足条件。
      * AAAA please verify completed tasks.
      * */
-    public function doneIssueChecked()
+    public function doneIssueChecked(Request $request)
     {
-        $jql = 'project = SD AND status = Done AND Sprint = '.env('SPRINT_ID').' order by lastViewed DESC';
-        $res = $this->jira($jql);
-        $issues = $res->issues;//获得任务数组
-        //  定义推送数组
-        $datas =  array();
-        $list = array();
-        $key = '48x48';
-        foreach ($issues as $issue){
-            if (array_key_exists('customfield_10034',$issue->fields->customFields)){
-                array_push($datas,$issue->fields->customFields['customfield_10034']->displayName);
-                $li['name'] = $issue->fields->customFields['customfield_10034']->displayName;
-                $li['avatar'] = $issue->fields->customFields['customfield_10034']->avatarUrls->$key;
-                array_push($list,$li);
-            }else{
-                array_push($datas,$issue->fields->reporter->displayName);
+        if ($request->isMethod('post')||$request->isMethod('get')) {
 
-                $li['name'] = $issue->fields->reporter->displayName;
-                $li['avatar'] = $issue->fields->reporter->avatarUrls->$key;
-                array_push($list,$li);
+
+            $jql = 'project = SD AND status = Done AND Sprint = ' . env('SPRINT_ID') . ' order by lastViewed DESC';
+            $res = $this->jira($jql);
+            $issues = $res->issues;//获得任务数组
+            //  定义推送数组
+            $datas = array();
+            $list = array();
+            $key = '48x48';
+            foreach ($issues as $issue) {
+                if (array_key_exists('customfield_10034', $issue->fields->customFields)) {
+                    array_push($datas, $issue->fields->customFields['customfield_10034']->displayName);
+                    $li['name'] = $issue->fields->customFields['customfield_10034']->displayName;
+                    $li['avatar'] = $issue->fields->customFields['customfield_10034']->avatarUrls->$key;
+                    array_push($list, $li);
+                } else {
+                    array_push($datas, $issue->fields->reporter->displayName);
+
+                    $li['name'] = $issue->fields->reporter->displayName;
+                    $li['avatar'] = $issue->fields->reporter->avatarUrls->$key;
+                    array_push($list, $li);
+                }
+
             }
 
-        }
-
-        $name = array_count_values ($datas);
-        $datas = array_unique($datas);
+            $name = array_count_values($datas);
+            $datas = array_unique($datas);
 //        $data['name'] = $name;
-        $string = '';
-        $temp = array();
-        foreach(array_unique($list,SORT_REGULAR) as $k=>$v){
-            array_push($temp,$v);
-        };
-        foreach($name as $k=>$v){
-            $string .= $this->getPronunciation($k).'<break time="0.2s" />';
-        };
-        $text = '<speak>'.$string.'please verify completed tasks.</speak>';
-        $voiceUrl = $this->polly($text);
-        $data['voiceUrl'] = $voiceUrl;
-        $data['list'] = $temp;
-        $res = $this->push($data,'done-issue-checked-event');
-        return $data;
+            $string = '';
+            $temp = array();
+            foreach (array_unique($list, SORT_REGULAR) as $k => $v) {
+                array_push($temp, $v);
+            };
+            foreach ($name as $k => $v) {
+                $string .= $this->getPronunciation($k) . '<break time="0.2s" />';
+            };
+            $text = '<speak>' . $string . 'please verify completed tasks.</speak>';
+            $voiceUrl = $this->polly($text);
+            $data['voiceUrl'] = $voiceUrl;
+            $data['list'] = $temp;
+            $res = $this->push($data, 'done-issue-checked-event');
+            return $data;
+        }
     }
     /*
      * 本sprint有任务超过1小时无人接取，会每隔5分钟语音播报“编号A、B、C任务超过1h无人接取，请技术人员尽快处理”。
      * */
-    public function todoChecked()
+    public function todoChecked(Request $request)
     {
-
-        $jql = 'project = SD AND status = "To Do" AND Sprint = '.env('SPRINT_ID').' AND assignee in (EMPTY) order by lastViewed DESC';
-        $res = $this->jira($jql);
-        $total = $res->total;//获得任务数组
-        $result = $this->isPeriodOfTime('12:00','14:00');
-        if ($total!==0&&$result!==true){
-            $data['voiceUrl'] = 'https://s3.us-west-2.amazonaws.com/multiverse.upload/1512446403-polly.mp3';
-            $res = $this->push($data,'play-voice-event');
-            return $data;
+        if ($request->isMethod('post')||$request->isMethod('get')) {
+            $jql = 'project = SD AND status = "To Do" AND Sprint = ' . env('SPRINT_ID') . ' AND assignee in (EMPTY) order by lastViewed DESC';
+            $res = $this->jira($jql);
+            $total = $res->total;//获得任务数组
+            $result = $this->isPeriodOfTime('12:00', '14:00');
+            if ($total !== 0 && $result !== true) {
+                $data['voiceUrl'] = 'https://s3.us-west-2.amazonaws.com/multiverse.upload/1512446403-polly.mp3';
+                $res = $this->push($data, 'play-voice-event');
+                return $data;
+            }
         }
-
     }
     /*
      *
@@ -268,80 +272,82 @@ class HomeController extends Controller
      * 进行一次提示“A、B、C的todo、reopen任务的总时长已经超过了剩余工作日的时长，
      * 请注意工作时间的分配，帮助PO同学留出测试时间”
      * */
-    public function amChecked()
+    public function amChecked(Request $request)
     {
-        $friends = [
-            ['name'=>'alexis', 'displayName'=>'alexis','avator'],
-            ['name'=>'644633115','displayName'=>'lianghaoming'],
-            ['name'=>'azoom11131','displayName'=>'ZengZhiXiong'],
-            ['name'=>'blinkseedcitrus','displayName'=>'HePingChuan'],
-            ['name'=>'chenggong19890215','displayName'=>'chenggong'],
-            ['name'=>'chenquanhong86','displayName'=>'chenquanhong'],
-            ['name'=>'"Chenwen Chen"','displayName'=>'ccw'],
-            ['name'=>'emptyxu','displayName'=>'xuyi'],
-            ['name'=>'eric1990zhang','displayName'=>'Zhang DaoYang'],
-            ['name'=>'haomajf','displayName'=>'liangjifen'],
-            ['name'=> 'huang.zacc','displayName'=>'Zachary Huang'],
-            ['name'=>'huskycharmin','displayName'=>'ChenQiaMing'],
-            ['name'=>'jinlinhan11111','displayName'=>'jinlinhan'],
-            ['name'=>'jiwon','displayName'=>'Jiwon Kang'],
-            ['name'=>'leebo2012','displayName'=>'LIBO'],
-            ['name'=>'liufan331','displayName'=>'LiuFan'],
-            ['name'=>'lynch.xu','displayName'=>'lynch'],
-            ['name'=>'penggaohua2017','displayName'=>'penggaohua'],
-            ['name'=>'pengqian9086','displayName'=>'PQ'],
-            ['name'=>'xiongfei8548','displayName'=>'XIONG FEI'],
-            ['name'=>'xucheng93161','displayName'=>'xucheng'],
-            ['name'=> 'yohan.duval','displayName'=>'Yohan'],
-        ];
-        $StrugglingFriends = array();
-        $list = array();
-        $key = '48x48';
-        foreach ($friends as $friend){
-            $name = $friend["name"];
-            $jql = 'project = SD AND issuetype = Story AND status in ("In Progress", Reopened, "To Do") AND Sprint = '.env('SPRINT_ID').' AND assignee in ('.$name.') order by lastViewed DESC ';
-            $res = $this->jira($jql);
-            if ($res->total===0){
+        if ($request->isMethod('post')||$request->isMethod('get')) {
 
-            }
-            else{
 
-                $issues = $res->issues;
-                $goingHours = 0;
-                $endDate = strtotime(env('SPRINT_END_DATE'));
-                $nowDate = strtotime(date('Y-m-d'));
-                $remainingWorkingHours = ($endDate-$nowDate)/86400*8+7;
-                foreach ($issues as $issue){
-                    if(isset($issue->fields->customfield_10022)){
-                        $goingHours += $issue->fields->customfield_10022;
+            $friends = [
+                ['name' => 'alexis', 'displayName' => 'alexis', 'avator'],
+                ['name' => '644633115', 'displayName' => 'lianghaoming'],
+                ['name' => 'azoom11131', 'displayName' => 'ZengZhiXiong'],
+                ['name' => 'blinkseedcitrus', 'displayName' => 'HePingChuan'],
+                ['name' => 'chenggong19890215', 'displayName' => 'chenggong'],
+                ['name' => 'chenquanhong86', 'displayName' => 'chenquanhong'],
+                ['name' => '"Chenwen Chen"', 'displayName' => 'ccw'],
+                ['name' => 'emptyxu', 'displayName' => 'xuyi'],
+                ['name' => 'eric1990zhang', 'displayName' => 'Zhang DaoYang'],
+                ['name' => 'haomajf', 'displayName' => 'liangjifen'],
+                ['name' => 'huang.zacc', 'displayName' => 'Zachary Huang'],
+                ['name' => 'huskycharmin', 'displayName' => 'ChenQiaMing'],
+                ['name' => 'jinlinhan11111', 'displayName' => 'jinlinhan'],
+                ['name' => 'jiwon', 'displayName' => 'Jiwon Kang'],
+                ['name' => 'leebo2012', 'displayName' => 'LIBO'],
+                ['name' => 'liufan331', 'displayName' => 'LiuFan'],
+                ['name' => 'lynch.xu', 'displayName' => 'lynch'],
+                ['name' => 'penggaohua2017', 'displayName' => 'penggaohua'],
+                ['name' => 'pengqian9086', 'displayName' => 'PQ'],
+                ['name' => 'xiongfei8548', 'displayName' => 'XIONG FEI'],
+                ['name' => 'xucheng93161', 'displayName' => 'xucheng'],
+                ['name' => 'yohan.duval', 'displayName' => 'Yohan'],
+            ];
+            $StrugglingFriends = array();
+            $list = array();
+            $key = '48x48';
+            foreach ($friends as $friend) {
+                $name = $friend["name"];
+                $jql = 'project = SD AND issuetype = Story AND status in ("In Progress", Reopened, "To Do") AND Sprint = ' . env('SPRINT_ID') . ' AND assignee in (' . $name . ') order by lastViewed DESC ';
+                $res = $this->jira($jql);
+                if ($res->total === 0) {
+
+                } else {
+
+                    $issues = $res->issues;
+                    $goingHours = 0;
+                    $endDate = strtotime(env('SPRINT_END_DATE'));
+                    $nowDate = strtotime(date('Y-m-d'));
+                    $remainingWorkingHours = ($endDate - $nowDate) / 86400 * 8 + 7;
+                    foreach ($issues as $issue) {
+                        if (isset($issue->fields->customfield_10022)) {
+                            $goingHours += $issue->fields->customfield_10022;
+                        }
+                    }
+                    if ($goingHours > $remainingWorkingHours) {
+
+                        array_push($StrugglingFriends, $friend['displayName']);
+                        $li['name'] = $issues[0]->fields->assignee->displayName;
+                        $li['avatar'] = $issues[0]->fields->assignee->avatarUrls->$key;
+                        array_push($list, $li);
                     }
                 }
-                if($goingHours>$remainingWorkingHours){
-
-                    array_push($StrugglingFriends,$friend['displayName']);
-                    $li['name'] = $issues[0]->fields->assignee->displayName;
-                    $li['avatar'] = $issues[0]->fields->assignee->avatarUrls->$key;
-                    array_push($list,$li);
+            }
+            // 拼接语音字符串
+            if (count($StrugglingFriends) > 0) {
+                $string = '';
+                foreach ($StrugglingFriends as $key => $value) {
+                    $string .= $this->getPronunciation($value) . '<break time="0.5s"/>';
                 }
+
+                $text = '<speak>' . $string . ',please check sprint progress.</speak>';
+                $data['voiceUrl'] = $this->polly($text);
+                $data['name'] = $StrugglingFriends;
+                $data['list'] = $list;
+
+                $res = $this->push($data, 'am10checked-event');
+                return $data;
             }
+
         }
-        // 拼接语音字符串
-        if (count($StrugglingFriends)>0){
-            $string = '';
-            foreach($StrugglingFriends as $key=>$value){
-                $string .= $this->getPronunciation($value).'<break time="0.5s"/>';
-            }
-
-            $text = '<speak>'.$string.',please check sprint progress.</speak>';
-            $data['voiceUrl'] = $this->polly($text);
-            $data['name'] = $StrugglingFriends;
-            $data['list'] = $list;
-
-            $res = $this->push($data,'am10checked-event');
-            return $data;
-        }
-
-
     }
     /*
      *
