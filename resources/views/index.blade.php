@@ -10,7 +10,7 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="/layui/css/layui.css">
         <link rel="stylesheet" href="/css/app.css">
-        <link rel="stylesheet" type="text/css" href="/fullPage/jquery.fullpage.css" />
+        <link rel="stylesheet" type="text/css" href="/fullpage/jquery.fullpage.css" />
     </head>
     <body>
     <div id="fullpage">
@@ -362,9 +362,9 @@
 
 
     <!-- This following line is only necessary in the case of using the option `scrollOverflow:true` -->
-    <script type="text/javascript" src="/fullPage/scrolloverflow.min.js"></script>
+    <script type="text/javascript" src="/fullpage/scrolloverflow.min.js"></script>
 
-    <script type="text/javascript" src="/fullPage/jquery.fullpage.js"></script>
+    <script type="text/javascript" src="/fullpage/jquery.fullpage.js"></script>
 
     <script>
         // “()()”表示自执行函数
