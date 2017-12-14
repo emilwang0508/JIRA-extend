@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <audio id="audio"></audio>
+    <audio id="audio" autoplay></audio>
     </body>
     <script src="/js/jQuery-3.2.1.min.js"></script>
     <script src="/layui/layui.all.js"></script>
@@ -117,7 +117,6 @@
                 console.log(e)
                 x.src = e;
                 x.load()
-                x.play()
         }
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
