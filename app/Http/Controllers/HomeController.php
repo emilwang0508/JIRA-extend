@@ -315,8 +315,8 @@ class HomeController extends Controller
                 if($goingHours>$remainingWorkingHours){
 
                     array_push($StrugglingFriends,$friend['displayName']);
-                    $li['name'] = $issue->fields->assignee->displayName;
-                    $li['avatar'] = $issue->fields->assignee->avatarUrls;
+                    $li['name'] = $issues[0]->fields->assignee->displayName;
+                    $li['avatar'] = $issues[0]->fields->assignee->avatarUrls;
                     array_push($list,$li);
                 }
             }
