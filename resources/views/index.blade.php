@@ -47,7 +47,6 @@
                 <div id="pmEvent" class="layui-col-md6">
                     <p class="title" id="pmEventTilte">需要验收任务</p>
                     <ul id="pm" >
-                        <li class="layui-col-md6"><img class="avatar" src="" alt="">FREEMAN</li>
                     </ul>
                 </div>
             </div>
