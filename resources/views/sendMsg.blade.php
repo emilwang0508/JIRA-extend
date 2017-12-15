@@ -14,6 +14,21 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.css" />
 </head>
 <body>
+    <h1 style="text-align: center;margin: 50px">Hi Polly!</h1>
+    <form action="/sendMsg" method="post" class="layui-form layui-container" style="margin-bottom: 50px">
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label" style="color: yellow">Message</label>
+            <div class="layui-input-block">
+                <textarea name="text" placeholder="Enter text" class="layui-textarea" required></textarea>
+            </div>
+        </div>
+        <input type="hidden" name="lang" value="English">
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit >send</button>
+            </div>
+        </div>
+    </form>
     <form action="/sendMsg" method="post" class="layui-form layui-container">
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label" style="color: yellow">文本(text)</label>
@@ -21,6 +36,7 @@
                 <textarea name="text" placeholder="请输入内容" class="layui-textarea" required></textarea>
             </div>
         </div>
+        <input type="hidden" value="Chinese" name="lang">
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit >send</button>

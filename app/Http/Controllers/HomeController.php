@@ -470,15 +470,16 @@ class HomeController extends Controller
     public function sendMsg(Request $request)
     {
         if($request->isMethod('post')){
-            if ($request->text!==''){
+            if ($request->text!==''&&$request->lang=='English'){
                 if ($request->type=='ssml'){
 
                 }else{
                     $data['voiceUrl'] = $this->polly($request->text,'text');
                     $this->push($data,'play-voice-event');
                 }
-            }else{
-
+            } elseif ($request->text!==''&&$request->lang=='Chinese'){
+                    $data['voiceUrl'] = $this->tts($request->text,'text');
+                    $this->push($data,'play-voice-event');
             }
         }
 
