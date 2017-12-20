@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Pusher\Pusher;
 use JiraRestApi\Configuration\ArrayConfiguration;
 use JiraRestApi\Issue\IssueService;
-
+use AipSpeech;
 class HomeController extends Controller
 {
     public function sent()
@@ -386,14 +386,47 @@ class HomeController extends Controller
     /*
      * TTS
      * */
-    public function tts($text)
-    {
-        $client = new \GuzzleHttp\Client();
-        $access_token = '24.d985bc11e0e7346eb70b26d7a6cf5cd8.2592000.1513493401.282335-10346057';
-        $cuid = 'fe80::5dfa:a924:40e9:a2d%6';
-        $url = 'http://tsn.baidu.com/text2audio?tex='.$text.'&lan=zh&cuid='.$cuid.'&ctp=1&tok='.$access_token;
-        $res =  $client->request('get', $url);
-        return $url;
+    public function tts($text){
+
+        $app_id = env('BAIDU_APP_ID');
+        $app_key = env('BAIDU_APP_KEY');
+        $app_secret_key = env('BAIDU_SECRET_KEY');
+        $aipSpeech = new AipSpeech($app_id, $app_key, $app_secret_key);
+        $result = $aipSpeech->synthesis($text, 'zh', 1, array(
+            'pit' => 5,
+            'vol' => 5,
+            'per' => 0
+        ));
+        if(!is_array($result)){
+            file_put_contents('audio.mp3', $result);
+            $fileName = time().'-baidu.mp3';
+            $s3region = 'us-west-2';
+            $credentials = new Credentials(env('AWS_KEY'),env('AWS_SECRET'));
+            $s3 = new S3Client(
+                [
+                    'version' => 'latest',
+                    'credentials' => $credentials,
+                    'region' => $s3region,
+                    'http'    => [
+                        'verify' => base_path('cacert.pem')
+                    ]
+                ]
+            );
+            $s3bucket = 'multiverse.upload';
+            $url = base_path('public/'.$fileName);
+//            $file = fopen($url, 'r');
+            $resultS3 = $s3->putObject([
+                'Key'=>$fileName,
+                'ACL'=>'public-read',
+                'Body'=>$result ,
+                'Bucket'=>$s3bucket,
+                'ContentType'=>'audio/mpeg',
+            ]);
+            $ObjectURL = $resultS3->get('ObjectURL');
+            if ($ObjectURL!==''){
+                return $ObjectURL;
+            }
+        }
     }
     /*
      * amazon polly tts
@@ -587,8 +620,7 @@ class HomeController extends Controller
     }
     public function test()
     {
-       $res =  $this->isPeriodOfTime('09:10','12:00');
-       dd($res===true);
+
     }
     /*
      * 0点事件
