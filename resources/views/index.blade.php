@@ -50,12 +50,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="slide">
-                <button onclick="test()" style="margin-left: 500px">test </button>
-            </div>
-
         </div>
-        <div class="section"></div>
     </div>
 
     <audio id="audio" autoplay></audio>
@@ -304,10 +299,20 @@
                     fullage.moveTo('#firstPage',0)
                     break;
                 case 'reload':
-                    alert('reload')
                     window.location.reload()
                     break;
-
+                case 'right':
+                    $.fn.fullpage.moveSlideRight()
+                    break;
+                case 'left':
+                    $.fn.fullpage.moveSlideLeft()
+                    break;
+                case 'next':
+                    $.fn.fullpage.moveSectionUp()
+                    break;
+                case 'pre':
+                    $.fn.fullpage.moveSectionDown()
+                    break;
             }
 
         })

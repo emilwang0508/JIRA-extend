@@ -6,11 +6,17 @@
                 <button class="layui-btn layui-btn-lg"  v-on:click="goHome()">
                     <i class="layui-icon">&#xe68e;</i>
                 </button>
-                <button class="layui-btn layui-btn-lg" v-on:click="goPre()" >
+                <button class="layui-btn layui-btn-lg" v-on:click="goLeft()" >
                     <i class="layui-icon">&#xe65a;</i>
                 </button>
-                <button class="layui-btn layui-btn-lg" v-on:click="goNext()" >
+                <button class="layui-btn layui-btn-lg" v-on:click="goRight()" >
                     <i class="layui-icon">&#xe65b;</i>
+                </button>
+                <button class="layui-btn layui-btn-lg" v-on:click="goPre()" >
+                    <i class="layui-icon">&#xe619;</i>
+                </button>
+                <button class="layui-btn layui-btn-lg" v-on:click="goNext()" >
+                    <i class="layui-icon">&#xe61a;</i>
                 </button>
                 <button class="layui-btn layui-btn-lg " v-on:click="reload()" >
                     <i class="layui-icon">&#x1002;</i>
@@ -97,6 +103,16 @@
                 _this.menuEvent('ClickPreviousBtn')
                 layer.msg('Success!!!')
 
+            },
+            goRight(){
+                let _this = this
+                _this.menuEvent('ClickRightBtn')
+                layer.msg('Success!!!')
+            },
+            goLeft(){
+                let _this = this
+                _this.menuEvent('ClickLeftBtn')
+                layer.msg('Success!!!')
             },
             saveDictionary(){
                 let url = '/saveDictionary';

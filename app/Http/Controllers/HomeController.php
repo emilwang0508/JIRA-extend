@@ -664,6 +664,16 @@ class HomeController extends Controller
                     $result['code'] = 1;
                     $result['event'] = 'pre';
                     break;
+                case 'ClickRightBtn'://点击了向右按钮
+                    $result['status'] = 'success';
+                    $result['code'] = 1;
+                    $result['event'] = 'right';
+                    break;
+                case 'ClickLeftBtn'://点击了向右按钮
+                    $result['status'] = 'success';
+                    $result['code'] = 1;
+                    $result['event'] = 'right';
+                    break;
                 default:
                     $result['status'] = 'error';
                     $result['code'] = 0;
