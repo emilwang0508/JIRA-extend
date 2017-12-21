@@ -22,6 +22,8 @@
 <body style="background-color: #eeeeee">
     <div id="app">
         <dash></dash>
+        <send-msg style="margin-top: 100px"></send-msg>
+        <dict style="margin: 50px auto"></dict>
     </div>
 </body>
 <script src="/js/jQuery-3.2.1.min.js"></script>

@@ -23,35 +23,6 @@
                 </button>
             </div>
         </div>
-        <div class="">
-            <h3 style="margin-top: 50px">用户词典</h3>
-            <div class="text-center">
-
-                <table class="layui-table excel">
-                    <colgroup>
-                        <col width="150">
-                        <col width="200">
-                        <col>
-                    </colgroup>
-                    <thead>
-                    <tr>
-                        <th>姓名</th>
-                        <th>昵称</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="p in partners">
-                        <td><input type="text" class="layui-input-block" v-model="p.key"></td>
-                        <td><input type="text" class="layui-input-block"  v-model="p.value"></td>
-                    </tr>
-                    </tbody>
-
-                </table>
-                <button class="layui-btn" lay-submit lay-filter="formDemo" v-on:click="saveDictionary()">保存当前用户词典</button>
-                <button class="layui-btn" lay-submit lay-filter="formDemo" v-on:click="menuEvent()">测试</button>
-            </div>
-        </div>
-
     </div>
 </template>
 

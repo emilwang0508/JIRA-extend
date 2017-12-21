@@ -33,3 +33,4 @@ Route::any('/sendMsg', 'HomeController@sendMsg');
 Route::any('/dashboard', 'HomeController@dashboard');
 Route::any('/menuEvent', 'HomeController@menuEvent');
 Route::any('/saveDictionary', 'HomeController@saveDictionary');
+Route::any('/getDictionary', 'HomeController@getDictionary');

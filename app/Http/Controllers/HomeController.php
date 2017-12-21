@@ -518,10 +518,13 @@ class HomeController extends Controller
             } elseif ($request->text!==''&&$request->lang=='Chinese'){
                     $data['voiceUrl'] = $this->tts($request->text,'text');
                     $this->push($data,'play-voice-event');
+                    return $data;
             }
+        }else{
+            return view('sendMsg');
         }
 
-        return view('sendMsg');
+
     }
     /*
      *
@@ -529,82 +532,13 @@ class HomeController extends Controller
      * */
     public function getPronunciation($name)
     {
-        switch ($name)
-        {
-            case 'alexis':
-                return 'alexis';
-                break;
-            case 'ccw':
-                return 'ccw';
-                break;
-            case 'chenggong':
-                return 'Brother Gong';
-                break;
-            case 'chenquanhong':
-                return 'chen chuen hong';
-                break;
-            case 'HePingChuan':
-                return 'NekoPara';
-                break;
-            case 'xuyi':
-                return 'tsu yi';
-                break;
-            case 'Zhang DaoYang':
-                return 'Eric';
-                break;
-            case 'liangjifen':
-                return 'tsi fen';
-                break;
-            case 'Zachary Huang':
-                return '';
-                break;
-            case 'ChenQiaMing':
-                return 'Charmin';
-                break;
-            case 'jinlinhan':
-                return 'lin han';
-                break;
-            case 'Jiwon Kang':
-                return 'Jiwon';
-                break;
-            case 'LIBO':
-                return 'LI BO';
-                break;
-            case 'LiuFan':
-                return 'LF';
-                break;
-            case 'lynch':
-                return 'Lynch';
-                break;
-            case 'penggaohua':
-                return 'GAO';
-                break;
-            case 'PQ':
-                return 'PQ';
-                break;
-            case 'XIONG FEI':
-                return 'tsiong fei';
-                break;
-            case 'xucheng':
-                return 'dja dja cheng';
-                break;
-            case 'Yohan':
-                return 'Yohan';
-                break;
-            case 'lianghaoming':
-                return 'hao ming';
-                break;
-            case 'ZengZhiXiong':
-                return 'da siong';
-                break;
-            case 'Freeman Fan':
-                return 'Freeman';
-                break;
-            case 'Emil Wong':
-                return 'Emil';
-                break;
-            default:
-                return $name;
+        $json_sting = file_get_contents('js/dictionary.json');
+        $array = json_decode($json_sting);
+        $res = $this->deep_in_array($name, $array);
+        if ($res!==false){
+            return $res->value;
+        }else{
+            return $name;
         }
     }
     /*
@@ -626,6 +560,24 @@ class HomeController extends Controller
     public function test()
     {
 
+    }
+    public function deep_in_array($value, $array) {
+        foreach($array as $item) {
+            if(!is_array($item)) {
+                if ($item->key == $value) {
+                    return $item;
+                } else {
+                    continue;
+                }
+            }
+
+            if(in_array($value, $item)) {
+                return $item;
+            } else if(deep_in_array($value, $item)) {
+                return $item;
+            }
+        }
+        return false;
     }
     /*
      * 0点事件
@@ -689,8 +641,20 @@ class HomeController extends Controller
         }
     }
     /*编辑用户词典*/
-    public function saveDictionary()
+    public function saveDictionary(Request $request)
     {
-        
+      if ($request->isMethod('post')){
+        $res = file_put_contents('js/dictionary.json', json_encode($request->param));
+        return $res;
+      }
+    }
+    /*
+     * 获取用户词典
+     * */
+    public function getDictionary()
+    {
+        $data = array();//生成一个数组
+        $json_sting = file_get_contents('js/dictionary.json');
+        return $json_sting;
     }
 }

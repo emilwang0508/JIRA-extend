@@ -17,7 +17,8 @@ window.Vue = require('vue');
 
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('dash', require('./components/Dashboard.vue'));
-Vue.component('send-msg', require('./components/Dashboard.vue'));
+Vue.component('send-msg', require('./components/SendMsg.vue'));//发送消息
+Vue.component('dict', require('./components/Dictionary.vue'));//词典
 const app = new Vue({
     el: '#app'
 });
