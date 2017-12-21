@@ -22,6 +22,11 @@ class HomeController extends Controller
         echo "data: The server time is: {$time}\n\n";
         flush();
     }
+
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
     //获取当前项目所有属性
     public function getAllIssue()
     {
@@ -629,5 +634,53 @@ class HomeController extends Controller
     {
         $data['event'] = 'locationReload';
         $this->push($data,'am0-event');
+    }
+    /*
+     * 遥控器
+     * */
+    public function menuEvent(Request $request)
+    {
+        $event = $request->event;
+        if ($event!==''||$event!==null){
+            $result = [];
+            switch ($event){
+                case 'ClickHomeBtn'://点击了首页按钮
+                    $result['status'] = 'success';
+                    $result['code'] = 1;
+                    $result['event'] = 'home';
+                    break;
+                case 'ClickReloadBtn'://点击了刷新按钮
+                    $result['status'] = 'success';
+                    $result['code'] = 1;
+                    $result['event'] = 'reload';
+                    break;
+                case 'ClickNextBtn'://点击了下一页按钮
+                    $result['status'] = 'success';
+                    $result['code'] = 1;
+                    $result['event'] = 'next';
+                    break;
+                case 'ClickPreviousBtn'://点击了上一页按钮
+                    $result['status'] = 'success';
+                    $result['code'] = 1;
+                    $result['event'] = 'pre';
+                    break;
+                default:
+                    $result['status'] = 'error';
+                    $result['code'] = 0;
+                    $result['event'] = 'home';
+                    return ['status'=>'error','code'=>0,'event'=>'Event is not defined'];
+            }
+            if ($result['code']===1){
+//                $result = json_encode($result);
+                $this->push($result,'menu-event');
+                return $result;
+            }
+
+        }
+    }
+    /*编辑用户词典*/
+    public function saveDictionary()
+    {
+        
     }
 }

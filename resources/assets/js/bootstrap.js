@@ -1,16 +1,4 @@
-import Echo from "laravel-echo"
-window.Pusher = require('pusher-js');
-window.Echo = new Echo({
-    // broadcaster: 'socket.io',
-    // host: window.location.hostname + ':6001'
-    broadcaster: 'pusher',
-    key: 'PUSHER_APP_KEY'
-});
-window._ = require('lodash');
-Echo.private(`channel-name`)
-    .listen('.server.issue', (e) => {
-        console.log(e);
-    });
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This

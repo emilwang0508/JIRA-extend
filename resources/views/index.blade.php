@@ -32,7 +32,6 @@
                     <div class="layui-col-md2">
                         <h2 class="builds-title">-BUILDS</h2>
                         <ul id="build-project-area">
-
                         </ul>
                     </div>
                 </div>
@@ -47,11 +46,16 @@
                 <div id="pmEvent" class="layui-col-md6">
                     <p class="title" id="pmEventTilte">需要验收任务</p>
                     <ul id="pm" >
+
                     </ul>
                 </div>
             </div>
+            <div class="slide">
+                <button onclick="test()" style="margin-left: 500px">test </button>
+            </div>
 
         </div>
+        <div class="section"></div>
     </div>
 
     <audio id="audio" autoplay></audio>
@@ -68,6 +72,30 @@
     <script type="text/javascript" src="/fullpage/scrolloverflow.min.js"></script>
 
     <script type="text/javascript" src="/fullpage/jquery.fullpage.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                //Navigation
+                menu: '#menu',
+                lockAnchors: false,
+                anchors:['firstPage', 'secondPage'],
+                navigation: false,
+                navigationPosition: 'right',
+                showActiveTooltip: false,
+                slidesNavigation: false,
+                slidesNavPosition: 'bottom',
+                verticalCentered:false,
+                setAutoScrolling: false,
+                scrollOverflow: true,
+                setScrollingSpeed:10000,
+                continuousVertical: true,
+                loopHorizontal: true,
+                controlArrowColor:'rgba(0,0,0,0)',
+            });
+
+        });
+
+    </script>
     <script>
         // “()()”表示自执行函数
         (function (doc, win) {
@@ -266,28 +294,27 @@
                 return false;
             }
         }
+        // am0:00 event
+        var fullage = $.fn.fullpage;
+        channel.bind('menu-event', function(data){
+            let event = data.event
+            console.log(event)
+            switch (event){
+                case 'home':
+                    fullage.moveTo('#firstPage',0)
+                    break;
+                case 'reload':
+                    alert('reload')
+                    window.location.reload()
+                    break;
+
+            }
+
+        })
+        function test(){
+            alert(fullage)
+            $.fn.fullpage.moveTo('#firstPage',0)
+        }
     </script>
-    <script>
-        $(document).ready(function() {
-            $('#fullpage').fullpage({
-                //Navigation
-                menu: '#menu',
-                lockAnchors: false,
-                anchors:['firstPage', 'secondPage'],
-                navigation: false,
-                navigationPosition: 'right',
-                navigationTooltips: ['firstSlide', 'secondSlide'],
-                showActiveTooltip: false,
-                slidesNavigation: false,
-                slidesNavPosition: 'bottom',
-                verticalCentered:false,
-                setAutoScrolling: false,
-                scrollOverflow: true,
-                setScrollingSpeed:10000,
-                continuousVertical: true,
-                loopHorizontal: true,
-                controlArrowColor:'rgba(0,0,0,0)',
-            });
-        });
-    </script>
+
 </html>

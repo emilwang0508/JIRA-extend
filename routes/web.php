@@ -29,4 +29,7 @@ Route::any('/polly', 'HomeController@polly');
 Route::get('/todoChecked', 'HomeController@todoChecked');
 Route::any('/test', 'HomeController@test');
 Route::any('/sendMsg', 'HomeController@sendMsg');
-Route::any('/am0event', 'HomeController@am0Event');
+Route::any('/sendMsg', 'HomeController@sendMsg');
+Route::any('/dashboard', 'HomeController@dashboard');
+Route::any('/menuEvent', 'HomeController@menuEvent');
+Route::any('/saveDictionary', 'HomeController@saveDictionary');

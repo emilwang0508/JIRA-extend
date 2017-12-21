@@ -16,6 +16,8 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('dash', require('./components/Dashboard.vue'));
+Vue.component('send-msg', require('./components/Dashboard.vue'));
 const app = new Vue({
     el: '#app'
 });

@@ -16,10 +16,9 @@
 
 body{
   background-color: #1b1b1b;
-  font-family: Brasilia;
 }
 div{
-  font-family: Brasilia;
+
 }
 h2{
   text-align: center;
@@ -50,6 +49,7 @@ ul#reopened-list li{
   background: url(/images/reopened_bg.png) no-repeat center;
   position: relative;
   background-size: contain;
+  font-family: Brasilia;
   .project{
     height: 2.1rem;
     padding: 1rem 1rem 0;
@@ -85,6 +85,7 @@ ul#reopened-list li{
   }
 }
 ul#done-list li{
+  font-family: Brasilia;
   margin: 0 0.5rem;
   color: #000000;
   border-radius: 10px;
@@ -122,6 +123,7 @@ ul#done-list li{
 
 }
 #build-project-area{
+  font-family: Brasilia;
   margin-top: 50px;
   font-size: 0.35rem;
   li{
@@ -138,6 +140,9 @@ ul#done-list li{
     }
     .project-name{
       font-size: 0.6rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
   li.success{
@@ -168,6 +173,7 @@ ul#done-list li{
   margin: .5rem 10px;
   background-size: contain;
   width: calc(50% - 20px)!important;
+  font-family: Brasilia;
   .title{
     font-size: 0.9rem;
     text-align: center;
@@ -196,5 +202,15 @@ ul#done-list li{
     margin-right: 10px;
     background-size: cover;
     overflow: hidden;
+  }
+}
+.text-center{
+  text-align: center;
+}
+.excel{
+  input[type="text"]{
+    border: none;
+    width: 100%;
+    margin-left: 0;
   }
 }
