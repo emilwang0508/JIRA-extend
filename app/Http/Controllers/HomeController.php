@@ -197,44 +197,48 @@ class HomeController extends Controller
 
             $jql = 'project = SD AND status = Done AND Sprint = ' . env('SPRINT_ID') . ' order by lastViewed DESC';
             $res = $this->jira($jql);
-            $issues = $res->issues;//获得任务数组
-            //  定义推送数组
-            $datas = array();
-            $list = array();
-            $key = '48x48';
-            foreach ($issues as $issue) {
-                if (array_key_exists('customfield_10034', $issue->fields->customFields)) {
-                    array_push($datas, $issue->fields->customFields['customfield_10034']->displayName);
-                    $li['name'] = $issue->fields->customFields['customfield_10034']->displayName;
-                    $li['avatar'] = $issue->fields->customFields['customfield_10034']->avatarUrls->$key;
-                    array_push($list, $li);
-                } else {
-                    array_push($datas, $issue->fields->reporter->displayName);
+            if($res->total===0||$res->total=='0'){
+                return ['status'=>'success','msg'=>'Not found issue'];
+            }else{
+                $issues = $res->issues;//获得任务数组
+                //  定义推送数组
+                $datas = array();
+                $list = array();
+                $key = '48x48';
+                foreach ($issues as $issue) {
+                    if (array_key_exists('customfield_10034', $issue->fields->customFields)) {
+                        array_push($datas, $issue->fields->customFields['customfield_10034']->displayName);
+                        $li['name'] = $issue->fields->customFields['customfield_10034']->displayName;
+                        $li['avatar'] = $issue->fields->customFields['customfield_10034']->avatarUrls->$key;
+                        array_push($list, $li);
+                    } else {
+                        array_push($datas, $issue->fields->reporter->displayName);
 
-                    $li['name'] = $issue->fields->reporter->displayName;
-                    $li['avatar'] = $issue->fields->reporter->avatarUrls->$key;
-                    array_push($list, $li);
+                        $li['name'] = $issue->fields->reporter->displayName;
+                        $li['avatar'] = $issue->fields->reporter->avatarUrls->$key;
+                        array_push($list, $li);
+                    }
+
                 }
 
+                $name = array_count_values($datas);
+                $datas = array_unique($datas);
+                $string = '';
+                $temp = array();
+                foreach (array_unique($list, SORT_REGULAR) as $k => $v) {
+                    array_push($temp, $v);
+                };
+                foreach ($name as $k => $v) {
+                    $string .= $this->getPronunciation($k) . '<break time="0.2s" />';
+                };
+                $text = '<speak>' . $string . 'please verify completed tasks.</speak>';
+                $voiceUrl = $this->polly($text);
+                $data['voiceUrl'] = $voiceUrl;
+                $data['list'] = $temp;
+                $res = $this->push($data, 'done-issue-checked-event');
+                return $data;
             }
 
-            $name = array_count_values($datas);
-            $datas = array_unique($datas);
-//        $data['name'] = $name;
-            $string = '';
-            $temp = array();
-            foreach (array_unique($list, SORT_REGULAR) as $k => $v) {
-                array_push($temp, $v);
-            };
-            foreach ($name as $k => $v) {
-                $string .= $this->getPronunciation($k) . '<break time="0.2s" />';
-            };
-            $text = '<speak>' . $string . 'please verify completed tasks.</speak>';
-            $voiceUrl = $this->polly($text);
-            $data['voiceUrl'] = $voiceUrl;
-            $data['list'] = $temp;
-            $res = $this->push($data, 'done-issue-checked-event');
-            return $data;
         }
     }
     /*
